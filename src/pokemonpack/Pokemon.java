@@ -1,6 +1,7 @@
 package pokemonpack;
 
 public class Pokemon {
+	int tipo;
 	int hitpoints;
 	int attack;
 	int defense;
