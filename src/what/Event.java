@@ -5,6 +5,8 @@ abstract public class Event {
 	public Event(long eventTime) {
 		evtTime = eventTime;
 	}
+	public Event() {
+	}
 	public boolean ready() {
 		return System.currentTimeMillis() >= evtTime;
 	}
