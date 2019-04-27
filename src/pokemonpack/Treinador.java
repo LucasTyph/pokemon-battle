@@ -8,7 +8,7 @@ public class Treinador {
 		return time[1];
 	}
 	
-	public ordenaAtaque (int j) {
+	public void ordenaAtaque (int j) {
 		
 	}
 }

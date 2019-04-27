@@ -7,7 +7,7 @@ public class Batalha extends Controller {
 	private static Pokemon trainer1Party[] = new Pokemon[6];
 	private static Pokemon trainer2Party[] = new Pokemon[6];
 	private static int party[] = new int[12];
-	private static int possiblePokemon[] = {65, 76, 91, 94, 103, 113, 124, 135, 144, 149};
+	private static int possiblePokemon[] = {53, 65, 71, 76, 80, 91, 94, 103, 112, 113, 121, 124, 128, 131, 135, 143, 144, 145, 149};
 	private static int actions1[] = new int[2];
 	private static int actions2[] = new int[2];
 	
@@ -22,11 +22,20 @@ public class Batalha extends Controller {
 	public static Pokemon newPoke (int dexNum) {
 		Pokemon a = null;
 		switch (dexNum) {
+		case 53:
+			a = new Persian53();
+			break;
 		case 65:
 			a = new Alakazam65();
 			break;
+		case 71:
+			a = new Victreebel71();
+			break;
 		case 76:
 			a = new Golem76();
+			break;
+		case 80:
+			a = new Slowbro80();
 			break;
 		case 91:
 			a = new Cloyster91();
@@ -37,17 +46,35 @@ public class Batalha extends Controller {
 		case 103:
 			a = new Exeggutor103();
 			break;
+		case 112:
+			a = new Rhydon112();
+			break;
 		case 113:
 			a = new Chansey113();
+			break;
+		case 121:
+			a = new Starmie121();
 			break;
 		case 124:
 			a = new Jynx124();
 			break;
+		case 128:
+			a = new Tauros128();
+			break;
+		case 131:
+			a = new Lapras131();
+			break;
 		case 135:
 			a = new Jolteon135();
 			break;
+		case 143:
+			a = new Snorlax143();
+			break;
 		case 144:
 			a = new Articuno144();
+			break;
+		case 145:
+			a = new Zapdos145();
 			break;
 		case 149:
 			a = new Dragonite149();
@@ -214,15 +241,24 @@ public class Batalha extends Controller {
 		leitura = new Scanner(System.in);
 		System.out.println("Batalha Pokémon! 6 vs 6");
 		System.out.println("Opções para escolha:");
+		System.out.println("[53]: Lapras");
 		System.out.println("[65]: Alakazam");
+		System.out.println("[71]: Victreebel");
 		System.out.println("[76]: Golem");
+		System.out.println("[80]: Slowbro");
 		System.out.println("[91]: Cloyster");
 		System.out.println("[94]: Gengar");
 		System.out.println("[103]: Exeggutor");
+		System.out.println("[112]: Rhydon");
 		System.out.println("[113]: Chansey");
+		System.out.println("[121]: Starmie");
 		System.out.println("[124]: Jynx");
+		System.out.println("[128]: Tauros");
+		System.out.println("[131]: Lapras");
 		System.out.println("[135]: Jolteon");
+		System.out.println("[143]: Snorlax");
 		System.out.println("[144]: Articuno");
+		System.out.println("[145]: Zapdos");
 		System.out.println("[149]: Dragonite");
 		System.out.println("[]: ");
 		System.out.print("Treinador 1, escolha seus 6 Pokemon pelo numero da Pokedex: ");
