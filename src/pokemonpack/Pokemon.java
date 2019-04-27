@@ -1,12 +1,12 @@
 package pokemonpack;
 
 public class Pokemon {
-	int tipo;
-	int hitpoints;
-	int attack;
-	int defense;
-	int speed;
-	int dexNum;
+	public int tipo;
+	public int hitpoints;
+	public int attack;
+	public int defense;
+	public int speed;
+	public int dexNum;
 	
 	Pokemon (int hp, int a, int d, int s, int num){
 		this.attack=a;
