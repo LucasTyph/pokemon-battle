@@ -10,6 +10,8 @@ public class Batalha extends Controller {
 	private static int possiblePokemon[] = {53, 65, 71, 76, 80, 91, 94, 103, 112, 113, 121, 124, 128, 131, 135, 143, 144, 145, 149};
 	private static int actions1[] = new int[2];
 	private static int actions2[] = new int[2];
+	private static int atual1=0;
+	private static int atual2=0;
 	
 	public static boolean contains(final int[] array, final int num) {
 	    for (final int i : array) {
@@ -133,6 +135,7 @@ public class Batalha extends Controller {
 					System.out.println("escolhe um numero direito plmds");
 					choice = leitura.nextInt();
 				}
+				atual1=choice;
 				System.out.println("escolheu o plkmn numero "+choice);
 				actions1[1]=choice;
 				break;
@@ -189,6 +192,7 @@ public class Batalha extends Controller {
 					System.out.println("escolhe um numero direito plmds");
 					choice = leitura.nextInt();
 				}
+				atual2=choice;
 				System.out.println("escolheu o plkmn numero "+choice+", T2. Bad choice.");
 				actions2[1]=choice;
 				break;
@@ -260,7 +264,6 @@ public class Batalha extends Controller {
 		System.out.println("[144]: Articuno");
 		System.out.println("[145]: Zapdos");
 		System.out.println("[149]: Dragonite");
-		System.out.println("[]: ");
 		System.out.print("Treinador 1, escolha seus 6 Pokemon pelo numero da Pokedex: ");
 		for (int i=0; i<6; i++) {
 			party[i] = leitura.nextInt();
