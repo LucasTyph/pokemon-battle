@@ -3,96 +3,113 @@ package pokemonpack;
 public class Attack {
 	public int power;
 	public String name;
-	private Attack(int power, String name) {
+	public int priority;
+	public Attack(int power, String name) {
 		this.power=power;
 		this.name=name;
+		priority = 0;
 	}
-	
-	public class HyperBeam extends Attack{
+	public Attack(int power, String name, int priority) {
+		this.power=power;
+		this.name=name;
+		this.priority=priority;
+	}
+}
+
+	class HyperBeam extends Attack{
 		public HyperBeam() {
 			super(150, "Hyper Beam");
 		}
 	}
-	public class SkyAttack extends Attack{
-		public SkyAttack() {
+	class SkyAttack extends Attack{
+		SkyAttack() {
 			super(140, "Sky Attack");
 		}
 	}
-	public class SkullBash extends Attack {
-		public SkullBash(){
+	class SkullBash extends Attack {
+		SkullBash(){
 			super(130, "Skull Bash");
 		}
 	}
-	public class HJK extends Attack {
-		public HJK(){
+	class HJK extends Attack {
+		HJK(){
 			super(130, "High Jump Kick");
 		}
 	}
-	public class Thrash extends Attack {
-		public Thrash(){
+	class Thrash extends Attack {
+		Thrash(){
 			super(120, "Thrash");
 		}
 	}
-	public class SolarBeam extends Attack {
-		public SolarBeam(){
+	class SolarBeam extends Attack {
+		SolarBeam(){
 			super(120, "Solar Beam");
 		}
 	}
-	public class PetalDance extends Attack {
-		public PetalDance(){
+	class PetalDance extends Attack {
+		PetalDance(){
 			super(120, "Petal Dance");
 		}
 	}
-	public class Thunder extends Attack {
-		public Thunder(){
+	class Thunder extends Attack {
+		Thunder(){
 			super(110, "Thunder");
 		}
 	}
-	public class HydroPump extends Attack {
-		public HydroPump(){
+	class HydroPump extends Attack {
+		HydroPump(){
 			super(110, "Hydro Pump");
 		}
 	}
-	public class FireBlast extends Attack {
-		public FireBlast(){
+	class FireBlast extends Attack {
+		FireBlast(){
 			super(110, "Fire Blast");
 		}
 	}
-	public class Earthquake extends Attack {
-		public Earthquake(){
+	class Earthquake extends Attack {
+		Earthquake(){
 			super(100, "Earthquake");
 		}
 	}
-	public class Thunderbolt extends Attack {
-		public Thunderbolt(){
+	class Thunderbolt extends Attack {
+		Thunderbolt(){
 			super(90, "Thunderbolt");
 		}
 	}
-	public class Surf extends Attack{
-		public Surf(){
+	class Surf extends Attack{
+		Surf(){
 			super(90, "Surf");
 		}
 	}
-	public class Psychic extends Attack{
-		public Psychic(){
+	class Psychic extends Attack{
+		Psychic(){
 			super(90, "Psychic");
 		}
 	}
-	public class IceBeam extends Attack{
-		public IceBeam(){
+	class IceBeam extends Attack{
+		IceBeam(){
 			super(90, "Ice Beam");
 		}
 	}
-	public class Fly extends Attack{
-		public Fly(){
+	class Fly extends Attack{
+		Fly(){
 			super(90, "Fly");
 		}
 	}
-	public class Flamethrower extends Attack{
-		public Flamethrower(){
+	class Flamethrower extends Attack{
+		Flamethrower(){
 			super(90, "Flamethrower");
 		}
-	}	
-}
+	}
+	class KarateChop extends Attack{
+	    public KarateChop() {
+	        super(50, "Karate Chop");
+	    }
+	}
+	class QuickAttack extends Attack {
+		public QuickAttack() {
+			super (40, "Quick Attack", 1);
+		}
+	}
 
 	

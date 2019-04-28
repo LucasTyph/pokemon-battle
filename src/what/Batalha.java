@@ -117,10 +117,10 @@ public class Batalha extends Controller {
 			switch (choice) {
 			case 1: //ataque
 				System.out.println("Escolha seu ataque:");
-				System.out.println("[1] A");
-				System.out.println("[2] B");
-				System.out.println("[3] C");
-				System.out.println("[4] D");
+				System.out.println("[1] " + trainer1Party[atual1].a1.name);
+				System.out.println("[2] " + trainer1Party[atual1].a2.name);
+				System.out.println("[3] " + trainer1Party[atual1].a3.name);
+				System.out.println("[4] " + trainer1Party[atual1].a4.name);
 				choice = leitura.nextInt();
 				while (choice > 4 || choice < 1) {
 					System.out.println("escolhe um atk direito plmds");
@@ -174,10 +174,10 @@ public class Batalha extends Controller {
 			switch (choice) {
 			case 1: //ataque
 				System.out.println("Escolha seu ataque:");
-				System.out.println("[1] A");
-				System.out.println("[2] B");
-				System.out.println("[3] C");
-				System.out.println("[4] D");
+				System.out.println("[1] " + trainer2Party[atual2].a1.name);
+				System.out.println("[2] " + trainer2Party[atual2].a2.name);
+				System.out.println("[3] " + trainer2Party[atual2].a3.name);
+				System.out.println("[4] " + trainer2Party[atual2].a4.name);
 				choice = leitura.nextInt();
 				while (choice > 4 || choice < 1) {
 					System.out.println("escolhe um atk direito plmds2");
@@ -269,6 +269,7 @@ public class Batalha extends Controller {
 			party[i] = leitura.nextInt();
 			if (contains(possiblePokemon, party[i])) {
 				trainer1Party[i] = newPoke(party[i]);
+				System.out.println("escolheu o numero " + trainer1Party[i].dexNum);
 			}
 			else {
 				i--;
