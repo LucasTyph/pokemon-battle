@@ -94,7 +94,7 @@ public class Batalha extends Controller {
 			System.out.println(trainer2Party[atual2].name + ": Lv. 100, "+ trainer2Party[atual2].hitpoints + "/" + trainer2Party[atual2].hpmax + " HP.");
 		}
 		public String description() {
-			return "Mostra o estado atual da batalha.";
+			return "Pensem bem nas suas próximas ações, treinadores.";
 		}
 	}
 	
@@ -137,8 +137,11 @@ public class Batalha extends Controller {
 				System.out.println("[5] " + trainer1Party[4].name + ", "+ trainer1Party[4].hitpoints + "/" + trainer1Party[4].hpmax + " HP.");
 				System.out.println("[6] " + trainer1Party[5].name + ", "+ trainer1Party[5].hitpoints + "/" + trainer1Party[5].hpmax + " HP.");
 				choice = leitura.nextInt();
-				while (choice > 6 || choice < 1) { //checar também se o pokemon esta morto
-					System.out.println("escolhe um numero direito plmds");
+				while ((choice > 6 || choice < 1) || trainer1Party[choice-1].hitpoints < 0) { //checar também se o pokemon esta morto
+					if (choice >6 || choice < 1)
+						System.out.println("escolhe um numero direito plmds");
+					else
+						System.out.println("Este pokemon não pode mais batalhar. Escolha outro.");
 					choice = leitura.nextInt();
 				}
 				atual1=choice-1;
@@ -199,8 +202,11 @@ public class Batalha extends Controller {
 				System.out.println("[5] " + trainer2Party[4].name + ", "+ trainer2Party[4].hitpoints + "/" + trainer2Party[4].hpmax + " HP.");
 				System.out.println("[6] " + trainer2Party[5].name + ", "+ trainer2Party[5].hitpoints + "/" + trainer2Party[5].hpmax + " HP.");
 				choice = leitura.nextInt();
-				while (choice > 6 || choice < 1) { //checar também se o pokemon esta morto
-					System.out.println("escolhe um numero direito plmds");
+				while ((choice > 6 || choice < 1) || trainer2Party[choice-1].hitpoints < 0) { //checar também se o pokemon esta morto
+					if (choice > 6 || choice < 1)
+						System.out.println("escolhe um numero direito plmds");
+					else
+						System.out.println("Este pokemon não pode mais batalhar. Escolha outro.");
 					choice = leitura.nextInt();
 				}
 				atual2=choice-1;
@@ -259,8 +265,28 @@ public class Batalha extends Controller {
 				int dmg = Damage.dano(trainer1Party[atual1].attack, trainer2Party[atual2].defense, trainer1Party[atual1].a[actions1[1]].power);
 				trainer2Party[atual2].hitpoints -= dmg;
 				System.out.println("Deu " + dmg + " de dano!");
-				if (trainer2Party[atual2].hitpoints < 0) {
+				if (trainer2Party[atual2].hitpoints <= 0) {
 					System.out.println(trainer2Party[atual2].name + " fainted!");
+					if (trainer2Party[0].hitpoints <= 0 && trainer2Party[1].hitpoints <= 0 && trainer2Party[2].hitpoints <= 0 && trainer2Party[3].hitpoints <= 0 && trainer2Party[4].hitpoints <= 0 && trainer2Party[5].hitpoints <= 0) {
+						System.out.println("Todos os pokemon do treinador 2 estão fora de combate.");
+						System.out.println("O vencedor é o treinador 1!");
+						return;
+					}
+					System.out.println("Treinador 2, por favor escolha seu próximo pokemon.");
+					System.out.println("[1] " + trainer2Party[0].name + ", "+ trainer2Party[0].hitpoints + "/" + trainer2Party[0].hpmax + " HP.");
+					System.out.println("[2] " + trainer2Party[1].name + ", "+ trainer2Party[1].hitpoints + "/" + trainer2Party[1].hpmax + " HP.");
+					System.out.println("[3] " + trainer2Party[2].name + ", "+ trainer2Party[2].hitpoints + "/" + trainer2Party[2].hpmax + " HP.");
+					System.out.println("[4] " + trainer2Party[3].name + ", "+ trainer2Party[3].hitpoints + "/" + trainer2Party[3].hpmax + " HP.");
+					System.out.println("[5] " + trainer2Party[4].name + ", "+ trainer2Party[4].hitpoints + "/" + trainer2Party[4].hpmax + " HP.");
+					System.out.println("[6] " + trainer2Party[5].name + ", "+ trainer2Party[5].hitpoints + "/" + trainer2Party[5].hpmax + " HP.");
+					int choice = leitura.nextInt();
+					while ((choice > 6 || choice < 1) || trainer2Party[choice-1].hitpoints < 0) { //checar também se o pokemon esta morto
+						if (choice > 6 || choice < 1)
+							System.out.println("escolhe um numero direito plmds");
+						else
+							System.out.println("Este pokemon não pode mais batalhar. Escolha outro.");
+						choice = leitura.nextInt();
+					}
 				}
 			}
 			if (actions2[0] == 1 && actions1[0] != 1) {
@@ -268,8 +294,28 @@ public class Batalha extends Controller {
 				int dmg = Damage.dano(trainer2Party[atual2].attack, trainer1Party[atual1].defense, trainer2Party[atual2].a[actions2[1]].power);
 				trainer1Party[atual1].hitpoints -= dmg;
 				System.out.println("Deu " + dmg + " de dano!");
-				if (trainer1Party[atual1].hitpoints < 0) {
-					System.out.println(trainer1Party[atual1].name + "fainted!");
+				if (trainer1Party[atual1].hitpoints <= 0) {
+					System.out.println(trainer1Party[atual1].name + " fainted!");
+					if (trainer1Party[0].hitpoints <= 0 && trainer1Party[1].hitpoints <= 0 && trainer1Party[2].hitpoints <= 0 && trainer1Party[3].hitpoints <= 0 && trainer1Party[4].hitpoints <= 0 && trainer1Party[5].hitpoints <= 0) {
+						System.out.println("Todos os pokemon do treinador 1 estão fora de combate.");
+						System.out.println("O vencedor é o treinador 2!");
+						return;
+					}
+					System.out.println("Treinador 1, por favor escolha seu próximo pokemon.");
+					System.out.println("[1] " + trainer1Party[0].name + ", "+ trainer1Party[0].hitpoints + "/" + trainer1Party[0].hpmax + " HP.");
+					System.out.println("[2] " + trainer1Party[1].name + ", "+ trainer1Party[1].hitpoints + "/" + trainer1Party[1].hpmax + " HP.");
+					System.out.println("[3] " + trainer1Party[2].name + ", "+ trainer1Party[2].hitpoints + "/" + trainer1Party[2].hpmax + " HP.");
+					System.out.println("[4] " + trainer1Party[3].name + ", "+ trainer1Party[3].hitpoints + "/" + trainer1Party[3].hpmax + " HP.");
+					System.out.println("[5] " + trainer1Party[4].name + ", "+ trainer1Party[4].hitpoints + "/" + trainer1Party[4].hpmax + " HP.");
+					System.out.println("[6] " + trainer1Party[5].name + ", "+ trainer1Party[5].hitpoints + "/" + trainer1Party[5].hpmax + " HP.");
+					int choice = leitura.nextInt();
+					while ((choice > 6 || choice < 1) || trainer1Party[choice-1].hitpoints < 0) { //checar também se o pokemon esta morto
+						if (choice > 6 || choice < 1)
+							System.out.println("escolhe um numero direito plmds");
+						else
+							System.out.println("Este pokemon não pode mais batalhar. Escolha outro.");
+						choice = leitura.nextInt();
+					}
 				}
 			}
 			if (actions1[0] == 1 && actions2[0] == 1) {
@@ -283,12 +329,52 @@ public class Batalha extends Controller {
 						int dmg2 = Damage.dano(trainer2Party[atual2].attack, trainer1Party[atual1].defense, trainer2Party[atual2].a[actions2[1]].power);
 						trainer1Party[atual1].hitpoints -= dmg2;
 						System.out.println("Deu " + dmg2 + " de dano!");
-						if (trainer1Party[atual1].hitpoints < 0) {
-							System.out.println(trainer1Party[atual1].name + "fainted!");
+						if (trainer1Party[atual1].hitpoints <= 0) {
+							System.out.println(trainer1Party[atual1].name + " fainted!");
+							if (trainer1Party[0].hitpoints <= 0 && trainer1Party[1].hitpoints <= 0 && trainer1Party[2].hitpoints <= 0 && trainer1Party[3].hitpoints <= 0 && trainer1Party[4].hitpoints <= 0 && trainer1Party[5].hitpoints <= 0) {
+								System.out.println("Todos os pokemon do treinador 1 estão fora de combate.");
+								System.out.println("O vencedor é o treinador 2!");
+								return;
+							}
+							System.out.println("Treinador 1, por favor escolha seu próximo pokemon.");
+							System.out.println("[1] " + trainer1Party[0].name + ", "+ trainer1Party[0].hitpoints + "/" + trainer1Party[0].hpmax + " HP.");
+							System.out.println("[2] " + trainer1Party[1].name + ", "+ trainer1Party[1].hitpoints + "/" + trainer1Party[1].hpmax + " HP.");
+							System.out.println("[3] " + trainer1Party[2].name + ", "+ trainer1Party[2].hitpoints + "/" + trainer1Party[2].hpmax + " HP.");
+							System.out.println("[4] " + trainer1Party[3].name + ", "+ trainer1Party[3].hitpoints + "/" + trainer1Party[3].hpmax + " HP.");
+							System.out.println("[5] " + trainer1Party[4].name + ", "+ trainer1Party[4].hitpoints + "/" + trainer1Party[4].hpmax + " HP.");
+							System.out.println("[6] " + trainer1Party[5].name + ", "+ trainer1Party[5].hitpoints + "/" + trainer1Party[5].hpmax + " HP.");
+							int choice = leitura.nextInt();
+							while ((choice > 6 || choice < 1) || trainer1Party[choice-1].hitpoints < 0) { //checar também se o pokemon esta morto
+								if (choice > 6 || choice < 1)
+									System.out.println("escolhe um numero direito plmds");
+								else
+									System.out.println("Este pokemon não pode mais batalhar. Escolha outro.");
+								choice = leitura.nextInt();
+							}
 						}
 					}
 					else {
-						System.out.println(trainer2Party[atual2].name + "fainted!");
+						System.out.println(trainer2Party[atual2].name + " fainted!");
+						if (trainer2Party[0].hitpoints <= 0 && trainer2Party[1].hitpoints <= 0 && trainer2Party[2].hitpoints <= 0 && trainer2Party[3].hitpoints <= 0 && trainer2Party[4].hitpoints <= 0 && trainer2Party[5].hitpoints <= 0) {
+							System.out.println("Todos os pokemon do treinador 2 estão fora de combate.");
+							System.out.println("O vencedor é o treinador 1!");
+							return;
+						}
+						System.out.println("Treinador 2, por favor escolha seu próximo pokemon.");
+						System.out.println("[1] " + trainer2Party[0].name + ", "+ trainer2Party[0].hitpoints + "/" + trainer2Party[0].hpmax + " HP.");
+						System.out.println("[2] " + trainer2Party[1].name + ", "+ trainer2Party[1].hitpoints + "/" + trainer2Party[1].hpmax + " HP.");
+						System.out.println("[3] " + trainer2Party[2].name + ", "+ trainer2Party[2].hitpoints + "/" + trainer2Party[2].hpmax + " HP.");
+						System.out.println("[4] " + trainer2Party[3].name + ", "+ trainer2Party[3].hitpoints + "/" + trainer2Party[3].hpmax + " HP.");
+						System.out.println("[5] " + trainer2Party[4].name + ", "+ trainer2Party[4].hitpoints + "/" + trainer2Party[4].hpmax + " HP.");
+						System.out.println("[6] " + trainer2Party[5].name + ", "+ trainer2Party[5].hitpoints + "/" + trainer2Party[5].hpmax + " HP.");
+						int choice = leitura.nextInt();
+						while ((choice > 6 || choice < 1) || trainer2Party[choice-1].hitpoints < 0) { //checar também se o pokemon esta morto
+							if (choice > 6 || choice < 1)
+								System.out.println("escolhe um numero direito plmds");
+							else
+								System.out.println("Este pokemon não pode mais batalhar. Escolha outro.");
+							choice = leitura.nextInt();
+						}
 					}
 				}
 				else if (trainer1Party[atual1].a[actions1[1]].priority < trainer2Party[atual2].a[actions2[1]].priority) {
@@ -301,12 +387,52 @@ public class Batalha extends Controller {
 						int dmg = Damage.dano(trainer1Party[atual1].attack, trainer2Party[atual2].defense, trainer1Party[atual1].a[actions1[1]].power);
 						trainer2Party[atual2].hitpoints -= dmg;
 						System.out.println("Deu " + dmg + " de dano!");
-						if (trainer2Party[atual2].hitpoints < 0) {
-							System.out.println(trainer2Party[atual2].name + "fainted!");
+						if (trainer2Party[atual2].hitpoints <= 0) {
+							System.out.println(trainer2Party[atual2].name + " fainted!");
+							if (trainer2Party[0].hitpoints <= 0 && trainer2Party[1].hitpoints <= 0 && trainer2Party[2].hitpoints <= 0 && trainer2Party[3].hitpoints <= 0 && trainer2Party[4].hitpoints <= 0 && trainer2Party[5].hitpoints <= 0) {
+								System.out.println("Todos os pokemon do treinador 2 estão fora de combate.");
+								System.out.println("O vencedor é o treinador 1!");
+								return;
+							}
+							System.out.println("Treinador 2, por favor escolha seu próximo pokemon.");
+							System.out.println("[1] " + trainer2Party[0].name + ", "+ trainer2Party[0].hitpoints + "/" + trainer2Party[0].hpmax + " HP.");
+							System.out.println("[2] " + trainer2Party[1].name + ", "+ trainer2Party[1].hitpoints + "/" + trainer2Party[1].hpmax + " HP.");
+							System.out.println("[3] " + trainer2Party[2].name + ", "+ trainer2Party[2].hitpoints + "/" + trainer2Party[2].hpmax + " HP.");
+							System.out.println("[4] " + trainer2Party[3].name + ", "+ trainer2Party[3].hitpoints + "/" + trainer2Party[3].hpmax + " HP.");
+							System.out.println("[5] " + trainer2Party[4].name + ", "+ trainer2Party[4].hitpoints + "/" + trainer2Party[4].hpmax + " HP.");
+							System.out.println("[6] " + trainer2Party[5].name + ", "+ trainer2Party[5].hitpoints + "/" + trainer2Party[5].hpmax + " HP.");
+							int choice = leitura.nextInt();
+							while ((choice > 6 || choice < 1) || trainer2Party[choice-1].hitpoints < 0) { //checar também se o pokemon esta morto
+								if (choice > 6 || choice < 1)
+									System.out.println("escolhe um numero direito plmds");
+								else
+									System.out.println("Este pokemon não pode mais batalhar. Escolha outro.");
+								choice = leitura.nextInt();
+							}
 						}
 					}
 					else {
-						System.out.println(trainer1Party[atual1].name + "fainted!");
+						System.out.println(trainer1Party[atual1].name + " fainted!");
+						if (trainer1Party[0].hitpoints <= 0 && trainer1Party[1].hitpoints <= 0 && trainer1Party[2].hitpoints <= 0 && trainer1Party[3].hitpoints <= 0 && trainer1Party[4].hitpoints <= 0 && trainer1Party[5].hitpoints <= 0) {
+							System.out.println("Todos os pokemon do treinador 1 estão fora de combate.");
+							System.out.println("O vencedor é o treinador 2!");
+							return;
+						}
+						System.out.println("Treinador 1, por favor escolha seu próximo pokemon.");
+						System.out.println("[1] " + trainer1Party[0].name + ", "+ trainer1Party[0].hitpoints + "/" + trainer1Party[0].hpmax + " HP.");
+						System.out.println("[2] " + trainer1Party[1].name + ", "+ trainer1Party[1].hitpoints + "/" + trainer1Party[1].hpmax + " HP.");
+						System.out.println("[3] " + trainer1Party[2].name + ", "+ trainer1Party[2].hitpoints + "/" + trainer1Party[2].hpmax + " HP.");
+						System.out.println("[4] " + trainer1Party[3].name + ", "+ trainer1Party[3].hitpoints + "/" + trainer1Party[3].hpmax + " HP.");
+						System.out.println("[5] " + trainer1Party[4].name + ", "+ trainer1Party[4].hitpoints + "/" + trainer1Party[4].hpmax + " HP.");
+						System.out.println("[6] " + trainer1Party[5].name + ", "+ trainer1Party[5].hitpoints + "/" + trainer1Party[5].hpmax + " HP.");
+						int choice = leitura.nextInt();
+						while ((choice > 6 || choice < 1) || trainer1Party[choice-1].hitpoints < 0) { //checar também se o pokemon esta morto
+							if (choice > 6 || choice < 1)
+								System.out.println("escolhe um numero direito plmds");
+							else
+								System.out.println("Este pokemon não pode mais batalhar. Escolha outro.");
+							choice = leitura.nextInt();
+						}
 					}
 				}
 				else {
@@ -320,12 +446,52 @@ public class Batalha extends Controller {
 							int dmg2 = Damage.dano(trainer2Party[atual2].attack, trainer1Party[atual1].defense, trainer2Party[atual2].a[actions2[1]].power);
 							trainer1Party[atual1].hitpoints -= dmg2;
 							System.out.println("Deu " + dmg2 + " de dano!");
-							if (trainer1Party[atual1].hitpoints < 0) {
-								System.out.println(trainer1Party[atual1].name + "fainted!");
+							if (trainer1Party[atual1].hitpoints <= 0) {
+								System.out.println(trainer1Party[atual1].name + " fainted!");
+								if (trainer1Party[0].hitpoints <= 0 && trainer1Party[1].hitpoints <= 0 && trainer1Party[2].hitpoints <= 0 && trainer1Party[3].hitpoints <= 0 && trainer1Party[4].hitpoints <= 0 && trainer1Party[5].hitpoints <= 0) {
+									System.out.println("Todos os pokemon do treinador 1 estão fora de combate.");
+									System.out.println("O vencedor é o treinador 2!");
+									return;
+								}
+								System.out.println("Treinador 1, por favor escolha seu próximo pokemon.");
+								System.out.println("[1] " + trainer1Party[0].name + ", "+ trainer1Party[0].hitpoints + "/" + trainer1Party[0].hpmax + " HP.");
+								System.out.println("[2] " + trainer1Party[1].name + ", "+ trainer1Party[1].hitpoints + "/" + trainer1Party[1].hpmax + " HP.");
+								System.out.println("[3] " + trainer1Party[2].name + ", "+ trainer1Party[2].hitpoints + "/" + trainer1Party[2].hpmax + " HP.");
+								System.out.println("[4] " + trainer1Party[3].name + ", "+ trainer1Party[3].hitpoints + "/" + trainer1Party[3].hpmax + " HP.");
+								System.out.println("[5] " + trainer1Party[4].name + ", "+ trainer1Party[4].hitpoints + "/" + trainer1Party[4].hpmax + " HP.");
+								System.out.println("[6] " + trainer1Party[5].name + ", "+ trainer1Party[5].hitpoints + "/" + trainer1Party[5].hpmax + " HP.");
+								int choice = leitura.nextInt();
+								while ((choice > 6 || choice < 1) || trainer1Party[choice-1].hitpoints < 0) { //checar também se o pokemon esta morto
+									if (choice > 6 || choice < 1)
+										System.out.println("escolhe um numero direito plmds");
+									else
+										System.out.println("Este pokemon não pode mais batalhar. Escolha outro.");
+									choice = leitura.nextInt();
+								}
 							}
 						}
 						else {
-							System.out.println(trainer2Party[atual2].name + "fainted!");
+							System.out.println(trainer2Party[atual2].name + " fainted!");
+							if (trainer2Party[0].hitpoints <= 0 && trainer2Party[1].hitpoints <= 0 && trainer2Party[2].hitpoints <= 0 && trainer2Party[3].hitpoints <= 0 && trainer2Party[4].hitpoints <= 0 && trainer2Party[5].hitpoints <= 0) {
+								System.out.println("Todos os pokemon do treinador 2 estão fora de combate.");
+								System.out.println("O vencedor é o treinador 1!");
+								return;
+							}
+							System.out.println("Treinador 2, por favor escolha seu próximo pokemon.");
+							System.out.println("[1] " + trainer2Party[0].name + ", "+ trainer2Party[0].hitpoints + "/" + trainer2Party[0].hpmax + " HP.");
+							System.out.println("[2] " + trainer2Party[1].name + ", "+ trainer2Party[1].hitpoints + "/" + trainer2Party[1].hpmax + " HP.");
+							System.out.println("[3] " + trainer2Party[2].name + ", "+ trainer2Party[2].hitpoints + "/" + trainer2Party[2].hpmax + " HP.");
+							System.out.println("[4] " + trainer2Party[3].name + ", "+ trainer2Party[3].hitpoints + "/" + trainer2Party[3].hpmax + " HP.");
+							System.out.println("[5] " + trainer2Party[4].name + ", "+ trainer2Party[4].hitpoints + "/" + trainer2Party[4].hpmax + " HP.");
+							System.out.println("[6] " + trainer2Party[5].name + ", "+ trainer2Party[5].hitpoints + "/" + trainer2Party[5].hpmax + " HP.");
+							int choice = leitura.nextInt();
+							while ((choice > 6 || choice < 1) || trainer2Party[choice-1].hitpoints < 0) { //checar também se o pokemon esta morto
+								if (choice > 6 || choice < 1)
+									System.out.println("escolhe um numero direito plmds");
+								else
+									System.out.println("Este pokemon não pode mais batalhar. Escolha outro.");
+								choice = leitura.nextInt();
+							}
 						}
 					}
 					else {
@@ -339,11 +505,51 @@ public class Batalha extends Controller {
 							trainer2Party[atual2].hitpoints -= dmg;
 							System.out.println("Deu " + dmg + " de dano!");
 							if (trainer2Party[atual2].hitpoints < 0) {
-								System.out.println(trainer2Party[atual2].name + "fainted!");
+								System.out.println(trainer2Party[atual2].name + " fainted!");
+								if (trainer2Party[0].hitpoints <= 0 && trainer2Party[1].hitpoints <= 0 && trainer2Party[2].hitpoints <= 0 && trainer2Party[3].hitpoints <= 0 && trainer2Party[4].hitpoints <= 0 && trainer2Party[5].hitpoints <= 0) {
+									System.out.println("Todos os pokemon do treinador 2 estão fora de combate.");
+									System.out.println("O vencedor é o treinador 1!");
+									return;
+								}
+								System.out.println("Treinador 2, por favor escolha seu próximo pokemon.");
+								System.out.println("[1] " + trainer2Party[0].name + ", "+ trainer2Party[0].hitpoints + "/" + trainer2Party[0].hpmax + " HP.");
+								System.out.println("[2] " + trainer2Party[1].name + ", "+ trainer2Party[1].hitpoints + "/" + trainer2Party[1].hpmax + " HP.");
+								System.out.println("[3] " + trainer2Party[2].name + ", "+ trainer2Party[2].hitpoints + "/" + trainer2Party[2].hpmax + " HP.");
+								System.out.println("[4] " + trainer2Party[3].name + ", "+ trainer2Party[3].hitpoints + "/" + trainer2Party[3].hpmax + " HP.");
+								System.out.println("[5] " + trainer2Party[4].name + ", "+ trainer2Party[4].hitpoints + "/" + trainer2Party[4].hpmax + " HP.");
+								System.out.println("[6] " + trainer2Party[5].name + ", "+ trainer2Party[5].hitpoints + "/" + trainer2Party[5].hpmax + " HP.");
+								int choice = leitura.nextInt();
+								while ((choice > 6 || choice < 1) || trainer2Party[choice-1].hitpoints < 0) { //checar também se o pokemon esta morto
+									if (choice > 6 || choice < 1)
+										System.out.println("escolhe um numero direito plmds");
+									else
+										System.out.println("Este pokemon não pode mais batalhar. Escolha outro.");
+									choice = leitura.nextInt();
+								}
 							}
 						}
 						else {
-							System.out.println(trainer1Party[atual1].name + "fainted!");
+							System.out.println(trainer1Party[atual1].name + " fainted!");
+							if (trainer1Party[0].hitpoints <= 0 && trainer1Party[1].hitpoints <= 0 && trainer1Party[2].hitpoints <= 0 && trainer1Party[3].hitpoints <= 0 && trainer1Party[4].hitpoints <= 0 && trainer1Party[5].hitpoints <= 0) {
+								System.out.println("Todos os pokemon do treinador 1 estão fora de combate.");
+								System.out.println("O vencedor é o treinador 2!");
+								return;
+							}
+							System.out.println("Treinador 1, por favor escolha seu próximo pokemon.");
+							System.out.println("[1] " + trainer1Party[0].name + ", "+ trainer1Party[0].hitpoints + "/" + trainer1Party[0].hpmax + " HP.");
+							System.out.println("[2] " + trainer1Party[1].name + ", "+ trainer1Party[1].hitpoints + "/" + trainer1Party[1].hpmax + " HP.");
+							System.out.println("[3] " + trainer1Party[2].name + ", "+ trainer1Party[2].hitpoints + "/" + trainer1Party[2].hpmax + " HP.");
+							System.out.println("[4] " + trainer1Party[3].name + ", "+ trainer1Party[3].hitpoints + "/" + trainer1Party[3].hpmax + " HP.");
+							System.out.println("[5] " + trainer1Party[4].name + ", "+ trainer1Party[4].hitpoints + "/" + trainer1Party[4].hpmax + " HP.");
+							System.out.println("[6] " + trainer1Party[5].name + ", "+ trainer1Party[5].hitpoints + "/" + trainer1Party[5].hpmax + " HP.");
+							int choice = leitura.nextInt();
+							while ((choice > 6 || choice < 1) || trainer1Party[choice-1].hitpoints < 0) { //checar também se o pokemon esta morto
+								if (choice > 6 || choice < 1)
+									System.out.println("escolhe um numero direito plmds");
+								else
+									System.out.println("Este pokemon não pode mais batalhar. Escolha outro.");
+								choice = leitura.nextInt();
+							}
 						}
 					}
 				}
@@ -391,7 +597,7 @@ public class Batalha extends Controller {
 			party[i] = leitura.nextInt();
 			if (contains(possiblePokemon, party[i])) {
 				trainer1Party[i] = newPoke(party[i]);
-				System.out.println("escolheu o numero " + trainer1Party[i].dexNum);
+				System.out.println("Escolheu um " + trainer1Party[i].name + "!");
 			}
 			else {
 				i--;
@@ -403,6 +609,7 @@ public class Batalha extends Controller {
 			party[i] = leitura.nextInt();
 			if (contains(possiblePokemon, party[i])) {
 				trainer2Party[i] = newPoke(party[i]);
+				System.out.println("Escolheu um " + trainer2Party[i].name + "!");
 			}
 			else {
 				i--;
@@ -411,7 +618,6 @@ public class Batalha extends Controller {
 		}
 	System.out.println("Que comece a batalha!");
 	b.addEvent(b.new Trainer1Choice());
-	b.run();	
-		
+	b.run();
 	}
 }

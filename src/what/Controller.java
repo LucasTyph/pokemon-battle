@@ -5,8 +5,10 @@ class EventSet {
 	private int index = 0;
 	private int next = 0;
 	public void add(Event e) {
-		if(index >= events.length)
-			return; // (In real life, throw exception)
+		if(index >= events.length) {
+			System.out.println("Vocês demoraram demais. A partida será considerada um empate.");
+			return;
+		}
 		events[index++] = e;
 	}
 	public Event getNext() {
