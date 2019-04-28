@@ -130,14 +130,19 @@ public class Batalha extends Controller {
 				break;
 			case 2: //troca
 				System.out.println("Que pokemon enivar para a batalha?");
+				System.out.println("[1] " + trainer1Party[0].name + ", "+ trainer1Party[0].hitpoints + "/" + trainer1Party[0].hpmax + " HP.");
+				System.out.println("[2] " + trainer1Party[1].name + ", "+ trainer1Party[1].hitpoints + "/" + trainer1Party[1].hpmax + " HP.");
+				System.out.println("[3] " + trainer1Party[2].name + ", "+ trainer1Party[2].hitpoints + "/" + trainer1Party[2].hpmax + " HP.");
+				System.out.println("[4] " + trainer1Party[3].name + ", "+ trainer1Party[3].hitpoints + "/" + trainer1Party[3].hpmax + " HP.");
+				System.out.println("[5] " + trainer1Party[4].name + ", "+ trainer1Party[4].hitpoints + "/" + trainer1Party[4].hpmax + " HP.");
+				System.out.println("[6] " + trainer1Party[5].name + ", "+ trainer1Party[5].hitpoints + "/" + trainer1Party[5].hpmax + " HP.");
 				choice = leitura.nextInt();
 				while (choice > 6 || choice < 1) { //checar também se o pokemon esta morto
 					System.out.println("escolhe um numero direito plmds");
 					choice = leitura.nextInt();
 				}
-				atual1=choice;
-				System.out.println("escolheu o plkmn numero "+choice);
-				actions1[1]=choice;
+				atual1=choice-1;
+				System.out.println("Escolheu o pokemon " + trainer1Party[atual1].name + "!");
 				break;
 			case 3: //item
 				System.out.println("Usou Hyper Potion, recuperando 200 HP!");
@@ -186,15 +191,20 @@ public class Batalha extends Controller {
 				actions2[1]=choice;
 				break;
 			case 2: //troca
-				System.out.println("Que pokemon enivar para a batalha, T2?");
+				System.out.println("Que pokemon enivar para a batalha?");
+				System.out.println("[1] " + trainer2Party[0].name + ", "+ trainer2Party[0].hitpoints + "/" + trainer2Party[0].hpmax + " HP.");
+				System.out.println("[2] " + trainer2Party[1].name + ", "+ trainer2Party[1].hitpoints + "/" + trainer2Party[1].hpmax + " HP.");
+				System.out.println("[3] " + trainer2Party[2].name + ", "+ trainer2Party[2].hitpoints + "/" + trainer2Party[2].hpmax + " HP.");
+				System.out.println("[4] " + trainer2Party[3].name + ", "+ trainer2Party[3].hitpoints + "/" + trainer2Party[3].hpmax + " HP.");
+				System.out.println("[5] " + trainer2Party[4].name + ", "+ trainer2Party[4].hitpoints + "/" + trainer2Party[4].hpmax + " HP.");
+				System.out.println("[6] " + trainer2Party[5].name + ", "+ trainer2Party[5].hitpoints + "/" + trainer2Party[5].hpmax + " HP.");
 				choice = leitura.nextInt();
 				while (choice > 6 || choice < 1) { //checar também se o pokemon esta morto
 					System.out.println("escolhe um numero direito plmds");
 					choice = leitura.nextInt();
 				}
-				atual2=choice;
-				System.out.println("escolheu o plkmn numero "+choice+", T2. Bad choice.");
-				actions2[1]=choice;
+				atual2=choice-1;
+				System.out.println("Escolheu o pokemon " + trainer2Party[atual2].name + "!");
 				break;
 			case 3: //item
 				System.out.println("Usou Hyper Potion, recuperando 200 HP!");
@@ -356,7 +366,7 @@ public class Batalha extends Controller {
 			addEvent(new Trainer1Choice());
 		}
 		public String description() {
-			return "De volta ao T1: ";
+			return "Fim do turno.";
 		}
 	}
 	
