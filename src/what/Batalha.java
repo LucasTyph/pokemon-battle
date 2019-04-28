@@ -90,8 +90,8 @@ public class Batalha extends Controller {
 			super();
 		}
 		public void action() {
-			System.out.println("HP pkmn1:");
-			System.out.println("HP pkmn2:");
+			System.out.println(trainer1Party[atual1].name + ": Lv. 100, "+ trainer1Party[atual1].hitpoints + "/" + trainer1Party[atual1].hpmax + " HP.");
+			System.out.println(trainer2Party[atual2].name + ": Lv. 100, "+ trainer2Party[atual2].hitpoints + "/" + trainer2Party[atual2].hpmax + " HP.");
 		}
 		public String description() {
 			return "Mostra o estado atual da batalha.";
@@ -117,10 +117,10 @@ public class Batalha extends Controller {
 			switch (choice) {
 			case 1: //ataque
 				System.out.println("Escolha seu ataque:");
-				System.out.println("[1] " + trainer1Party[atual1].a1.name);
-				System.out.println("[2] " + trainer1Party[atual1].a2.name);
-				System.out.println("[3] " + trainer1Party[atual1].a3.name);
-				System.out.println("[4] " + trainer1Party[atual1].a4.name);
+				System.out.println("[1] " + trainer1Party[atual1].a[1].name);
+				System.out.println("[2] " + trainer1Party[atual1].a[2].name);
+				System.out.println("[3] " + trainer1Party[atual1].a[3].name);
+				System.out.println("[4] " + trainer1Party[atual1].a[4].name);
 				choice = leitura.nextInt();
 				while (choice > 4 || choice < 1) {
 					System.out.println("escolhe um atk direito plmds");
@@ -174,10 +174,10 @@ public class Batalha extends Controller {
 			switch (choice) {
 			case 1: //ataque
 				System.out.println("Escolha seu ataque:");
-				System.out.println("[1] " + trainer2Party[atual2].a1.name);
-				System.out.println("[2] " + trainer2Party[atual2].a2.name);
-				System.out.println("[3] " + trainer2Party[atual2].a3.name);
-				System.out.println("[4] " + trainer2Party[atual2].a4.name);
+				System.out.println("[1] " + trainer2Party[atual2].a[1].name);
+				System.out.println("[2] " + trainer2Party[atual2].a[2].name);
+				System.out.println("[3] " + trainer2Party[atual2].a[3].name);
+				System.out.println("[4] " + trainer2Party[atual2].a[4].name);
 				choice = leitura.nextInt();
 				while (choice > 4 || choice < 1) {
 					System.out.println("escolhe um atk direito plmds2");
@@ -228,6 +228,130 @@ public class Batalha extends Controller {
 	public class solveTurn extends Event{
 		public solveTurn() {}
 		public void action() {
+			if (actions1[0] == 3){		//cura
+				if ((trainer1Party[atual1].hitpoints+200) > trainer1Party[atual1].hpmax) {
+					System.out.println("Treinador 1 curou seu " + trainer1Party[atual1].name + "para full HP.");
+					trainer1Party[atual1].hitpoints = trainer1Party[atual1].hpmax;
+				}
+				else {
+					System.out.println("Treinador 1 curou 200HP de seu " + trainer1Party[atual1].name);
+					(trainer1Party[atual1].hitpoints)+=200;
+				}
+			}
+			if (actions2[0] == 3){		//cura
+				if ((trainer2Party[atual2].hitpoints+200) > trainer2Party[atual2].hpmax) {
+					System.out.println("Treinador 2 curou seu " + trainer2Party[atual2].name + "para full HP.");
+					trainer2Party[atual2].hitpoints = trainer2Party[atual2].hpmax;
+				}
+				else {
+					System.out.println("Treinador 2 curou 200HP de seu " + trainer2Party[atual2].name);
+					(trainer2Party[atual2].hitpoints)+=200;
+				}
+			}
+			if (actions1[0] == 2) {
+				System.out.println("Treinador 1 trocou para o pokemon "+ trainer1Party[atual1].name);
+			}
+			if (actions2[0] == 2) {
+				System.out.println("Treinador 2 trocou para o pokemon "+ trainer2Party[atual2].name);
+			}
+			
+			
+			if (actions1[0] == 1 && actions2[0] != 1) {
+				System.out.println(trainer1Party[atual1].name + " usou " + trainer1Party[atual1].a[actions1[1]].name + "!");
+				int dmg = Damage.dano(trainer1Party[atual1].attack, trainer2Party[atual2].defense, trainer1Party[atual1].a[actions1[1]].power);
+				trainer2Party[atual2].hitpoints -= dmg;
+				System.out.println("Deu " + dmg + " de dano!");
+				if (trainer2Party[atual2].hitpoints < 0) {
+					System.out.println(trainer2Party[atual2].name + "fainted!");
+				}
+			}
+			if (actions2[0] == 1 && actions1[0] != 1) {
+				System.out.println(trainer2Party[atual2].name + " usou " + trainer2Party[atual2].a[actions2[1]].name + "!");
+				int dmg = Damage.dano(trainer2Party[atual2].attack, trainer1Party[atual1].defense, trainer2Party[atual2].a[actions2[1]].power);
+				trainer1Party[atual1].hitpoints -= dmg;
+				System.out.println("Deu " + dmg + " de dano!");
+				if (trainer1Party[atual1].hitpoints < 0) {
+					System.out.println(trainer1Party[atual1].name + "fainted!");
+				}
+			}
+			if (actions1[0] == 1 && actions2[0] == 1) {
+				if (trainer1Party[atual1].a[actions1[1]].priority > trainer2Party[atual2].a[actions2[1]].priority) {
+					System.out.println(trainer1Party[atual1].name + " usou " + trainer1Party[atual1].a[actions1[1]].name + "!");
+					int dmg = Damage.dano(trainer1Party[atual1].attack, trainer2Party[atual2].defense, trainer1Party[atual1].a[actions1[1]].power);
+					trainer2Party[atual2].hitpoints -= dmg;
+					System.out.println("Deu " + dmg + " de dano!");
+					if (trainer2Party[atual2].hitpoints > 0) {
+						System.out.println(trainer2Party[atual2].name + " usou " + trainer2Party[atual2].a[actions2[1]].name + "!");
+						int dmg2 = Damage.dano(trainer2Party[atual2].attack, trainer1Party[atual1].defense, trainer2Party[atual2].a[actions2[1]].power);
+						trainer1Party[atual1].hitpoints -= dmg2;
+						System.out.println("Deu " + dmg2 + " de dano!");
+						if (trainer1Party[atual1].hitpoints < 0) {
+							System.out.println(trainer1Party[atual1].name + "fainted!");
+						}
+					}
+					else {
+						System.out.println(trainer2Party[atual2].name + "fainted!");
+					}
+				}
+				else if (trainer1Party[atual1].a[actions1[1]].priority < trainer2Party[atual2].a[actions2[1]].priority) {
+					System.out.println(trainer2Party[atual2].name + " usou " + trainer2Party[atual2].a[actions2[1]].name + "!");
+					int dmg2 = Damage.dano(trainer2Party[atual2].attack, trainer1Party[atual1].defense, trainer2Party[atual2].a[actions2[1]].power);
+					trainer1Party[atual1].hitpoints -= dmg2;
+					System.out.println("Deu " + dmg2 + " de dano!");
+					if (trainer1Party[atual1].hitpoints > 0) {
+						System.out.println(trainer1Party[atual1].name + " usou " + trainer1Party[atual1].a[actions1[1]].name + "!");
+						int dmg = Damage.dano(trainer1Party[atual1].attack, trainer2Party[atual2].defense, trainer1Party[atual1].a[actions1[1]].power);
+						trainer2Party[atual2].hitpoints -= dmg;
+						System.out.println("Deu " + dmg + " de dano!");
+						if (trainer2Party[atual2].hitpoints < 0) {
+							System.out.println(trainer2Party[atual2].name + "fainted!");
+						}
+					}
+					else {
+						System.out.println(trainer1Party[atual1].name + "fainted!");
+					}
+				}
+				else {
+					if (trainer1Party[atual1].speed < trainer2Party[atual2].speed) {
+						System.out.println(trainer1Party[atual1].name + " usou " + trainer1Party[atual1].a[actions1[1]].name + "!");
+						int dmg = Damage.dano(trainer1Party[atual1].attack, trainer2Party[atual2].defense, trainer1Party[atual1].a[actions1[1]].power);
+						trainer2Party[atual2].hitpoints -= dmg;
+						System.out.println("Deu " + dmg + " de dano!");
+						if (trainer2Party[atual2].hitpoints > 0) {
+							System.out.println(trainer2Party[atual2].name + " usou " + trainer2Party[atual2].a[actions2[1]].name + "!");
+							int dmg2 = Damage.dano(trainer2Party[atual2].attack, trainer1Party[atual1].defense, trainer2Party[atual2].a[actions2[1]].power);
+							trainer1Party[atual1].hitpoints -= dmg2;
+							System.out.println("Deu " + dmg2 + " de dano!");
+							if (trainer1Party[atual1].hitpoints < 0) {
+								System.out.println(trainer1Party[atual1].name + "fainted!");
+							}
+						}
+						else {
+							System.out.println(trainer2Party[atual2].name + "fainted!");
+						}
+					}
+					else {
+						System.out.println(trainer2Party[atual2].name + " usou " + trainer2Party[atual2].a[actions2[1]].name + "!");
+						int dmg2 = Damage.dano(trainer2Party[atual2].attack, trainer1Party[atual1].defense, trainer2Party[atual2].a[actions2[1]].power);
+						trainer1Party[atual1].hitpoints -= dmg2;
+						System.out.println("Deu " + dmg2 + " de dano!");
+						if (trainer1Party[atual1].hitpoints > 0) {
+							System.out.println(trainer1Party[atual1].name + " usou " + trainer1Party[atual1].a[actions1[1]].name + "!");
+							int dmg = Damage.dano(trainer1Party[atual1].attack, trainer2Party[atual2].defense, trainer1Party[atual1].a[actions1[1]].power);
+							trainer2Party[atual2].hitpoints -= dmg;
+							System.out.println("Deu " + dmg + " de dano!");
+							if (trainer2Party[atual2].hitpoints < 0) {
+								System.out.println(trainer2Party[atual2].name + "fainted!");
+							}
+						}
+						else {
+							System.out.println(trainer1Party[atual1].name + "fainted!");
+						}
+					}
+				}
+			}
+			
+			
 			addEvent(new Show());
 			addEvent(new Trainer1Choice());
 		}
