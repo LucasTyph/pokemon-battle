@@ -260,7 +260,7 @@ public class Batalha extends Controller {
 				trainer2Party[atual2].hitpoints -= dmg;
 				System.out.println("Deu " + dmg + " de dano!");
 				if (trainer2Party[atual2].hitpoints < 0) {
-					System.out.println(trainer2Party[atual2].name + "fainted!");
+					System.out.println(trainer2Party[atual2].name + " fainted!");
 				}
 			}
 			if (actions2[0] == 1 && actions1[0] != 1) {
@@ -310,7 +310,7 @@ public class Batalha extends Controller {
 					}
 				}
 				else {
-					if (trainer1Party[atual1].speed < trainer2Party[atual2].speed) {
+					if (trainer1Party[atual1].speed > trainer2Party[atual2].speed) {
 						System.out.println(trainer1Party[atual1].name + " usou " + trainer1Party[atual1].a[actions1[1]].name + "!");
 						int dmg = Damage.dano(trainer1Party[atual1].attack, trainer2Party[atual2].defense, trainer1Party[atual1].a[actions1[1]].power);
 						trainer2Party[atual2].hitpoints -= dmg;
@@ -367,7 +367,7 @@ public class Batalha extends Controller {
 		leitura = new Scanner(System.in);
 		System.out.println("Batalha Pokémon! 6 vs 6");
 		System.out.println("Opções para escolha:");
-		System.out.println("[53]: Lapras");
+		System.out.println("[53]: Persian");
 		System.out.println("[65]: Alakazam");
 		System.out.println("[71]: Victreebel");
 		System.out.println("[76]: Golem");
