@@ -7,13 +7,15 @@ public class Pokemon {
 	public int defense;
 	public int speed;
 	public int dexNum;
-	public Attack a1, a2, a3, a4;
+	public String name;
+	public Attack ataque[] = new Attack[5];
 	
-	Pokemon (int hp, int a, int d, int s, int num){
+	Pokemon (int hp, int a, int d, int s, int num, String name){
 		this.attack=a;
 		this.hitpoints=hp;
 		this.defense=d;
 		this.speed=s;
 		this.dexNum=num;
+		this.name = name;
 	}
 }
