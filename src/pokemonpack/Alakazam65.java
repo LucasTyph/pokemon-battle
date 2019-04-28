@@ -4,10 +4,11 @@ public class Alakazam65 extends Pokemon {
 	
 	public Alakazam65(){
 		super(314, 218, 207, 372, 65, "Alakazam");
-		a1 = new HyperBeam();
-		a2 = new Psychic();
-		a3 = new QuickAttack();
-		a4 = new Fly();
+		Attack a[] = new Attack[5];
+		a[1] = new HyperBeam();
+		a[2] = new Psychic();
+		a[3] = new QuickAttack();
+		a[4] = new Fly();
 	}
 
 }

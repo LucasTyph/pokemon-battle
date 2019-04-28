@@ -1,4 +1,4 @@
-1package pokemonpack;
+package pokemonpack;
 
 public class Attack {
 	public int power;

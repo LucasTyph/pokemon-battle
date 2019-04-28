@@ -223,18 +223,6 @@ public class Batalha extends Controller {
 		}
 	}	
 	
-	public class takeTurn extends Event {
-		public takeTurn (long eventTime) {
-			super (eventTime);
-		}
-		public void action() {
-			
-		}
-		public String description() {
-			return "hajimemashite";
-		}
-	}
-	
 	public class solveTurn extends Event{
 		public solveTurn() {}
 		public void action() {

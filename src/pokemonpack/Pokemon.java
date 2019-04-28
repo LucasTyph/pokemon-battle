@@ -7,8 +7,9 @@ public class Pokemon {
 	public int defense;
 	public int speed;
 	public int dexNum;
+	public int hpmax;
 	public String name;
-	public Attack ataque[] = new Attack[5];
+	public Attack a[] = new Attack[5];
 	
 	Pokemon (int hp, int a, int d, int s, int num, String name){
 		this.attack=a;
@@ -17,5 +18,6 @@ public class Pokemon {
 		this.speed=s;
 		this.dexNum=num;
 		this.name = name;
+		this.hpmax=hp;
 	}
 }
