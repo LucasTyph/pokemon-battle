@@ -287,6 +287,8 @@ public class Batalha extends Controller {
 							System.out.println("Este pokemon não pode mais batalhar. Escolha outro.");
 						choice = leitura.nextInt();
 					}
+					atual2=choice-1;
+					System.out.println("Escolheu o pokemon " + trainer2Party[atual2].name + "!");
 				}
 			}
 			if (actions2[0] == 1 && actions1[0] != 1) {
@@ -316,6 +318,8 @@ public class Batalha extends Controller {
 							System.out.println("Este pokemon não pode mais batalhar. Escolha outro.");
 						choice = leitura.nextInt();
 					}
+					atual1=choice-1;
+					System.out.println("Escolheu o pokemon " + trainer1Party[atual1].name + "!");
 				}
 			}
 			if (actions1[0] == 1 && actions2[0] == 1) {
@@ -351,6 +355,8 @@ public class Batalha extends Controller {
 									System.out.println("Este pokemon não pode mais batalhar. Escolha outro.");
 								choice = leitura.nextInt();
 							}
+							atual1=choice-1;
+							System.out.println("Escolheu o pokemon " + trainer1Party[atual1].name + "!");
 						}
 					}
 					else {
@@ -375,6 +381,8 @@ public class Batalha extends Controller {
 								System.out.println("Este pokemon não pode mais batalhar. Escolha outro.");
 							choice = leitura.nextInt();
 						}
+						atual2=choice-1;
+						System.out.println("Escolheu o pokemon " + trainer2Party[atual2].name + "!");
 					}
 				}
 				else if (trainer1Party[atual1].a[actions1[1]].priority < trainer2Party[atual2].a[actions2[1]].priority) {
@@ -409,6 +417,8 @@ public class Batalha extends Controller {
 									System.out.println("Este pokemon não pode mais batalhar. Escolha outro.");
 								choice = leitura.nextInt();
 							}
+							atual2=choice-1;
+							System.out.println("Escolheu o pokemon " + trainer2Party[atual2].name + "!");
 						}
 					}
 					else {
@@ -433,6 +443,8 @@ public class Batalha extends Controller {
 								System.out.println("Este pokemon não pode mais batalhar. Escolha outro.");
 							choice = leitura.nextInt();
 						}
+						atual1=choice-1;
+						System.out.println("Escolheu o pokemon " + trainer1Party[atual1].name + "!");
 					}
 				}
 				else {
@@ -468,6 +480,8 @@ public class Batalha extends Controller {
 										System.out.println("Este pokemon não pode mais batalhar. Escolha outro.");
 									choice = leitura.nextInt();
 								}
+								atual1=choice-1;
+								System.out.println("Escolheu o pokemon " + trainer1Party[atual1].name + "!");
 							}
 						}
 						else {
@@ -492,6 +506,8 @@ public class Batalha extends Controller {
 									System.out.println("Este pokemon não pode mais batalhar. Escolha outro.");
 								choice = leitura.nextInt();
 							}
+							atual2=choice-1;
+							System.out.println("Escolheu o pokemon " + trainer2Party[atual2].name + "!");
 						}
 					}
 					else {
@@ -526,6 +542,8 @@ public class Batalha extends Controller {
 										System.out.println("Este pokemon não pode mais batalhar. Escolha outro.");
 									choice = leitura.nextInt();
 								}
+								atual2=choice-1;
+								System.out.println("Escolheu o pokemon " + trainer2Party[atual2].name + "!");
 							}
 						}
 						else {
@@ -550,6 +568,8 @@ public class Batalha extends Controller {
 									System.out.println("Este pokemon não pode mais batalhar. Escolha outro.");
 								choice = leitura.nextInt();
 							}
+							atual1=choice-1;
+							System.out.println("Escolheu o pokemon " + trainer1Party[atual1].name + "!");
 						}
 					}
 				}
