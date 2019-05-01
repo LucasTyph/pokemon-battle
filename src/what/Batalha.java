@@ -2,13 +2,23 @@ package what;
 
 import java.util.Scanner;
 import pokemonpack.*;
+import java.util.Random;
 
 public class Batalha extends Controller {
 	private static Treinador t1 = new Treinador();
 	private static Treinador t2 = new Treinador();
+	private static Pokemon wild;
 	private static int party[] = new int[12];
-	private static int possiblePokemon[] = {53, 65, 71, 76, 80, 91, 94, 103, 112, 113, 121, 124, 128, 131, 135, 143, 144, 145, 149};
+	private static final int possiblePokemon[] = {53, 65, 71, 76, 80, 91, 94, 103, 112, 113, 121, 124, 128, 131, 135, 143, 144, 145, 149};
+	private static Random r = new Random();
 	
+	private static int getRandomRange(int min, int max) {
+		if (min >= max) {
+			System.out.println("deu merda.");
+			return 0;
+		}
+		return r.nextInt((max - min) + 1) + min;
+	}
 	public static boolean contains(final int[] array, final int num) {
 	    for (final int i : array) {
 	        if (i == num) {
@@ -80,7 +90,6 @@ public class Batalha extends Controller {
 		}
 		return a;
 	}
-	
 	public class Show extends Event{
 		public Show() {
 			super();
@@ -579,61 +588,111 @@ public class Batalha extends Controller {
 			return "Fim do turno.";
 		}
 	}
-	
-	
+	public class beginBattle extends Event{
+		public void action() {
+			leitura = new Scanner(System.in);
+			System.out.println("Batalha Pokémon! 6 vs 6");
+			System.out.println("Opções para escolha:");
+			System.out.println("[53]: Persian");
+			System.out.println("[65]: Alakazam");
+			System.out.println("[71]: Victreebel");
+			System.out.println("[76]: Golem");
+			System.out.println("[80]: Slowbro");
+			System.out.println("[91]: Cloyster");
+			System.out.println("[94]: Gengar");
+			System.out.println("[103]: Exeggutor");
+			System.out.println("[112]: Rhydon");
+			System.out.println("[113]: Chansey");
+			System.out.println("[121]: Starmie");
+			System.out.println("[124]: Jynx");
+			System.out.println("[128]: Tauros");
+			System.out.println("[131]: Lapras");
+			System.out.println("[135]: Jolteon");
+			System.out.println("[143]: Snorlax");
+			System.out.println("[144]: Articuno");
+			System.out.println("[145]: Zapdos");
+			System.out.println("[149]: Dragonite");
+			System.out.print("Treinador 1, escolha seus 6 Pokemon pelo numero da Pokedex: ");
+			for (int i=0; i<6; i++) {
+				party[i] = leitura.nextInt();
+				if (contains(possiblePokemon, party[i])) {
+					t1.party[i] = newPoke(party[i]);
+					System.out.println("Escolheu um " + t1.party[i].name + "!");
+				}
+				else {
+					i--;
+					System.out.println("Por favor insira um valor válido!");
+				}
+			}
+			System.out.print("Treinador 2, faça o mesmo: ");
+			for (int i=0; i<6; i++) {
+				party[i] = leitura.nextInt();
+				if (contains(possiblePokemon, party[i])) {
+					t2.party[i] = newPoke(party[i]);
+					System.out.println("Escolheu um " + t2.party[i].name + "!");
+				}
+				else {
+					i--;
+					System.out.println("Por favor insira um valor válido!");
+				}
+			}
+			addEvent(new Trainer1Choice());
+		}
+
+		public String description() {
+			return "Que comece a batalha!";
+		}
+		
+	}
+	public class worldWalking extends Event{
+		public void action() {
+			System.out.println("Você está andando por uma paisagem cheia de vida.");
+			System.out.println("Escolha cuidadosamente onde quer pisar.");
+			System.out.println("[1] Continuar na trilha / [2] Entrar no gramado");
+		}
+		public String description() {
+			
+		}
+	}
+	public class wildEncounter extends Event{
+		public void action() {
+			wild = newPoke(possiblePokemon[r.nextInt(19)]);
+			
+		}
+		public String description() {
+			
+		}
+	}
+	public class wildTurn extends Event{
+		public void action() {
+			
+		}
+		public String description() {
+			
+		}
+	}
+
 	
 	private static Scanner leitura;
 
 	public static void main(String[] args) {
 		Batalha b = new Batalha();
 		leitura = new Scanner(System.in);
-		System.out.println("Batalha Pokémon! 6 vs 6");
-		System.out.println("Opções para escolha:");
-		System.out.println("[53]: Persian");
-		System.out.println("[65]: Alakazam");
-		System.out.println("[71]: Victreebel");
-		System.out.println("[76]: Golem");
-		System.out.println("[80]: Slowbro");
-		System.out.println("[91]: Cloyster");
-		System.out.println("[94]: Gengar");
-		System.out.println("[103]: Exeggutor");
-		System.out.println("[112]: Rhydon");
-		System.out.println("[113]: Chansey");
-		System.out.println("[121]: Starmie");
-		System.out.println("[124]: Jynx");
-		System.out.println("[128]: Tauros");
-		System.out.println("[131]: Lapras");
-		System.out.println("[135]: Jolteon");
-		System.out.println("[143]: Snorlax");
-		System.out.println("[144]: Articuno");
-		System.out.println("[145]: Zapdos");
-		System.out.println("[149]: Dragonite");
-		System.out.print("Treinador 1, escolha seus 6 Pokemon pelo numero da Pokedex: ");
-		for (int i=0; i<6; i++) {
-			party[i] = leitura.nextInt();
-			if (contains(possiblePokemon, party[i])) {
-				t1.party[i] = newPoke(party[i]);
-				System.out.println("Escolheu um " + t1.party[i].name + "!");
-			}
-			else {
-				i--;
-				System.out.println("Por favor insira um valor válido!");
-			}
+		int modo;
+		System.out.println("Escolha o modo de jogo: ");
+		System.out.println("[1] Batalha 6 vs 6");
+		System.out.println("[2] Encontre pokemon selvagens mundo afora!");
+		modo = leitura.nextInt();
+		while (modo>2 || modo<1) {
+			System.out.println("Por favor insira um valor válido!");
+			modo = leitura.nextInt();
 		}
-		System.out.print("Treinador 2, faça o mesmo: ");
-		for (int i=0; i<6; i++) {
-			party[i] = leitura.nextInt();
-			if (contains(possiblePokemon, party[i])) {
-				t2.party[i] = newPoke(party[i]);
-				System.out.println("Escolheu um " + t2.party[i].name + "!");
-			}
-			else {
-				i--;
-				System.out.println("Por favor insira um valor válido!");
-			}
+		if (modo == 1) {
+			b.addEvent(b.new Trainer1Choice());
 		}
-	System.out.println("Que comece a batalha!");
-	b.addEvent(b.new Trainer1Choice());
-	b.run();
+		else {
+			b.addEvent(b.new worldWalking());
+		}
+		b.run();
 	}
 }
