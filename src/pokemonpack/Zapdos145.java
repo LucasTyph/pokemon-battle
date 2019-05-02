@@ -1,8 +1,8 @@
 package pokemonpack;
 
-public class Zapdos145 extends Pokemon{
+public class Zapdos145 extends Pokemon implements Tipos{
 	public Zapdos145() {
-		super(364, 306, 295, 328, 145, "Zapdos");
+		super(eletric, 364, 306, 295, 328, 145, "Zapdos");
 		a[1] = new Thunder();
 		a[2] = new SkyAttack();
 		a[3] = new HyperBeam();
