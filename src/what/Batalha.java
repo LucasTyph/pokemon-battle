@@ -793,12 +793,6 @@ public class Batalha extends Controller {
 					success = true;
 				}
 				System.out.println("A Pokébola está balançando...");
-				try	{
-				    Thread.sleep(3000);
-				} 
-				catch(InterruptedException ex) {
-				    Thread.currentThread().interrupt();
-				}
 				if (success) {
 					System.out.println("Pegou um "+ wild.name + "!");
 					if (numInParty < 6) {
@@ -810,6 +804,7 @@ public class Batalha extends Controller {
 						System.out.println("Seu time está lotado. Seu novo Pokémon foi enviado para o laboratório.");
 					}
 					addEvent(new worldWalking());
+					return;
 				}
 				else {
 					System.out.println("O Pokémon se livrou!");
@@ -848,7 +843,6 @@ public class Batalha extends Controller {
 						t1.atual=choice-1;
 						System.out.println("Escolheu o pokemon " + t1.party[t1.atual].name + "!");
 					}
-					addEvent(new wildEncounter());
 				}
 			}
 			else if (t1.actions[0] == 2){
@@ -888,7 +882,6 @@ public class Batalha extends Controller {
 					t1.atual=choice-1;
 					System.out.println("Escolheu o pokemon " + t1.party[t1.atual].name + "!");
 				}
-				addEvent(new wildEncounter());
 			}
 			else {
 				if (t1.party[t1.atual].a[t1.actions[1]].priority > wild.a[wildAction].priority) {
@@ -1078,16 +1071,16 @@ public class Batalha extends Controller {
 					}
 				}
 			}
+			addEvent (new wildShow());
 			if (wild.hitpoints <=0 ) {
 				addEvent (new worldWalking());
 			}
 			else {
-				addEvent (new wildShow());
 				addEvent (new wildEncounter());
 			}
 		}
 		public String description() {
-			return "sla";
+			return "~~";
 		}
 	}
 	public class wildShow extends Event{

@@ -1,7 +1,7 @@
 package what;
 
 class EventSet {
-	private Event[] events = new Event[150];
+	private Event[] events = new Event[200];
 	private int index = 0;
 	private int next = 0;
 	public void add(Event e) {
