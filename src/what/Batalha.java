@@ -969,7 +969,7 @@ public class Batalha extends Controller {
 							if (choice > 6 || choice < 1)
 								System.out.println("Pokemon invalido");
 							else
-								System.out.println("Este pokemon nao esta disponivel. Escolha outro.");
+								System.out.println("Este pokemon nao esta disponivel. Escolha outro. ");
 							choice = leitura.nextInt();
 						}
 						t1.atual=choice-1;
