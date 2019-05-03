@@ -25,82 +25,82 @@ public class Attack implements Tipos {
 		}
 	}
 	class SkyAttack extends Attack{
-		SkyAttack() {
+		public SkyAttack() {
 			super(140, "Sky Attack", flying);
 		}
 	}
 	class SkullBash extends Attack {
-		SkullBash(){
+		public SkullBash(){
 			super(130, "Skull Bash", normal);
 		}
 	}
 	class HJK extends Attack {
-		HJK(){
+		public HJK(){
 			super(130, "High Jump Kick", fighting);
 		}
 	}
 	class Thrash extends Attack {
-		Thrash(){
+		public Thrash(){
 			super(120, "Thrash", normal);
 		}
 	}
 	class SolarBeam extends Attack {
-		SolarBeam(){
+		public SolarBeam(){
 			super(120, "Solar Beam", grass);
 		}
 	}
 	class PetalDance extends Attack {
-		PetalDance(){
+		public PetalDance(){
 			super(120, "Petal Dance", grass);
 		}
 	}
 	class Thunder extends Attack {
-		Thunder(){
+		public Thunder(){
 			super(110, "Thunder", eletric);
 		}
 	}
 	class HydroPump extends Attack {
-		HydroPump(){
+		public HydroPump(){
 			super(110, "Hydro Pump", water);
 		}
 	}
 	class FireBlast extends Attack {
-		FireBlast(){
+		public FireBlast(){
 			super(110, "Fire Blast", fire);
 		}
 	}
 	class Earthquake extends Attack {
-		Earthquake(){
+		public Earthquake(){
 			super(100, "Earthquake", ground);
 		}
 	}
 	class Thunderbolt extends Attack {
-		Thunderbolt(){
+		public Thunderbolt(){
 			super(90, "Thunderbolt", eletric);
 		}
 	}
 	class Surf extends Attack{
-		Surf(){
+		public Surf(){
 			super(90, "Surf", water);
 		}
 	}
 	class Psychic extends Attack{
-		Psychic(){
+		public Psychic(){
 			super(90, "Psychic", psychic);
 		}
 	}
 	class IceBeam extends Attack{
-		IceBeam(){
+		public IceBeam(){
 			super(90, "Ice Beam", ice);
 		}
 	}
 	class Fly extends Attack{
-		Fly(){
+		public Fly(){
 			super(90, "Fly", flying);
 		}
 	}
 	class Flamethrower extends Attack{
-		Flamethrower(){
+		public Flamethrower(){
 			super(90, "Flamethrower", fire);
 		}
 	}
