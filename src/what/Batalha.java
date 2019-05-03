@@ -262,7 +262,7 @@ public class Batalha extends Controller {
 			
 			if (t1.actions[0] == 1 && t2.actions[0] != 1) {
 				System.out.println(t1.party[t1.atual].name + " usou " + t1.party[t1.atual].a[t1.actions[1]].name + "!");
-				int dmg = Damage.dano(t1.party[t1.atual].attack, t2.party[t2.atual].defense, t1.party[t1.atual].a[t1.actions[1]].power);
+				int dmg = Damage.dano(t1.party[t1.atual].attack, t2.party[t2.atual].defense, t1.party[t1.atual].a[t1.actions[1]].power, t1.party[t1.atual].a[t1.actions[1]].tipodoataque, t1.party[t1.atual].tipo, t2.party[t2.atual].tipo);
 				t2.party[t2.atual].hitpoints -= dmg;
 				System.out.println("Deu " + dmg + " de dano!");
 				if (t2.party[t2.atual].hitpoints <= 0) {
@@ -293,7 +293,7 @@ public class Batalha extends Controller {
 			}
 			if (t2.actions[0] == 1 && t1.actions[0] != 1) {
 				System.out.println(t2.party[t2.atual].name + " usou " + t2.party[t2.atual].a[t2.actions[1]].name + "!");
-				int dmg = Damage.dano(t2.party[t2.atual].attack, t1.party[t1.atual].defense, t2.party[t2.atual].a[t2.actions[1]].power);
+				int dmg = Damage.dano(t2.party[t2.atual].attack, t1.party[t1.atual].defense, t2.party[t2.atual].a[t2.actions[1]].power, t2.party[t2.atual].a[t2.actions[1]].tipodoataque, t2.party[t2.atual].tipo, t1.party[t1.atual].tipo );
 				t1.party[t1.atual].hitpoints -= dmg;
 				System.out.println("Deu " + dmg + " de dano!");
 				if (t1.party[t1.atual].hitpoints <= 0) {
@@ -325,12 +325,12 @@ public class Batalha extends Controller {
 			if (t1.actions[0] == 1 && t2.actions[0] == 1) {
 				if (t1.party[t1.atual].a[t1.actions[1]].priority > t2.party[t2.atual].a[t2.actions[1]].priority) {
 					System.out.println(t1.party[t1.atual].name + " usou " + t1.party[t1.atual].a[t1.actions[1]].name + "!");
-					int dmg = Damage.dano(t1.party[t1.atual].attack, t2.party[t2.atual].defense, t1.party[t1.atual].a[t1.actions[1]].power);
+					int dmg = Damage.dano(t1.party[t1.atual].attack, t2.party[t2.atual].defense, t1.party[t1.atual].a[t1.actions[1]].power, t1.party[t1.atual].a[t1.actions[1]].tipodoataque, t1.party[t1.atual].tipo, t2.party[t2.atual].tipo);
 					t2.party[t2.atual].hitpoints -= dmg;
 					System.out.println("Deu " + dmg + " de dano!");
 					if (t2.party[t2.atual].hitpoints > 0) {
 						System.out.println(t2.party[t2.atual].name + " usou " + t2.party[t2.atual].a[t2.actions[1]].name + "!");
-						int dmg2 = Damage.dano(t2.party[t2.atual].attack, t1.party[t1.atual].defense, t2.party[t2.atual].a[t2.actions[1]].power);
+						int dmg2 = Damage.dano(t2.party[t2.atual].attack, t1.party[t1.atual].defense, t2.party[t2.atual].a[t2.actions[1]].power, t2.party[t2.atual].a[t2.actions[1]].tipodoataque, t2.party[t2.atual].tipo, t1.party[t1.atual].tipo);
 						t1.party[t1.atual].hitpoints -= dmg2;
 						System.out.println("Deu " + dmg2 + " de dano!");
 						if (t1.party[t1.atual].hitpoints <= 0) {
@@ -387,12 +387,12 @@ public class Batalha extends Controller {
 				}
 				else if (t1.party[t1.atual].a[t1.actions[1]].priority < t2.party[t2.atual].a[t2.actions[1]].priority) {
 					System.out.println(t2.party[t2.atual].name + " usou " + t2.party[t2.atual].a[t2.actions[1]].name + "!");
-					int dmg2 = Damage.dano(t2.party[t2.atual].attack, t1.party[t1.atual].defense, t2.party[t2.atual].a[t2.actions[1]].power);
+					int dmg2 = Damage.dano(t2.party[t2.atual].attack, t1.party[t1.atual].defense, t2.party[t2.atual].a[t2.actions[1]].power, t2.party[t2.atual].a[t2.actions[1]].tipodoataque, t2.party[t2.atual].tipo, t1.party[t1.atual].tipo);
 					t1.party[t1.atual].hitpoints -= dmg2;
 					System.out.println("Deu " + dmg2 + " de dano!");
 					if (t1.party[t1.atual].hitpoints > 0) {
 						System.out.println(t1.party[t1.atual].name + " usou " + t1.party[t1.atual].a[t1.actions[1]].name + "!");
-						int dmg = Damage.dano(t1.party[t1.atual].attack, t2.party[t2.atual].defense, t1.party[t1.atual].a[t1.actions[1]].power);
+						int dmg = Damage.dano(t1.party[t1.atual].attack, t2.party[t2.atual].defense, t1.party[t1.atual].a[t1.actions[1]].power,  t1.party[t1.atual].a[t1.actions[1]].tipodoataque, t1.party[t1.atual].tipo, t2.party[t2.atual].tipo);
 						t2.party[t2.atual].hitpoints -= dmg;
 						System.out.println("Deu " + dmg + " de dano!");
 						if (t2.party[t2.atual].hitpoints <= 0) {
@@ -450,12 +450,12 @@ public class Batalha extends Controller {
 				else {
 					if (t1.party[t1.atual].speed > t2.party[t2.atual].speed) {
 						System.out.println(t1.party[t1.atual].name + " usou " + t1.party[t1.atual].a[t1.actions[1]].name + "!");
-						int dmg = Damage.dano(t1.party[t1.atual].attack, t2.party[t2.atual].defense, t1.party[t1.atual].a[t1.actions[1]].power);
+						int dmg = Damage.dano(t1.party[t1.atual].attack, t2.party[t2.atual].defense, t1.party[t1.atual].a[t1.actions[1]].power, t1.party[t1.atual].a[t1.actions[1]].tipodoataque, t1.party[t1.atual].tipo, t2.party[t2.atual].tipo);
 						t2.party[t2.atual].hitpoints -= dmg;
 						System.out.println("Deu " + dmg + " de dano!");
 						if (t2.party[t2.atual].hitpoints > 0) {
 							System.out.println(t2.party[t2.atual].name + " usou " + t2.party[t2.atual].a[t2.actions[1]].name + "!");
-							int dmg2 = Damage.dano(t2.party[t2.atual].attack, t1.party[t1.atual].defense, t2.party[t2.atual].a[t2.actions[1]].power);
+							int dmg2 = Damage.dano(t2.party[t2.atual].attack, t1.party[t1.atual].defense, t2.party[t2.atual].a[t2.actions[1]].power, t2.party[t2.atual].a[t2.actions[1]].tipodoataque, t2.party[t2.atual].tipo, t1.party[t1.atual].tipo);
 							t1.party[t1.atual].hitpoints -= dmg2;
 							System.out.println("Deu " + dmg2 + " de dano!");
 							if (t1.party[t1.atual].hitpoints <= 0) {
@@ -512,12 +512,12 @@ public class Batalha extends Controller {
 					}
 					else {
 						System.out.println(t2.party[t2.atual].name + " usou " + t2.party[t2.atual].a[t2.actions[1]].name + "!");
-						int dmg2 = Damage.dano(t2.party[t2.atual].attack, t1.party[t1.atual].defense, t2.party[t2.atual].a[t2.actions[1]].power);
+						int dmg2 = Damage.dano(t2.party[t2.atual].attack, t1.party[t1.atual].defense, t2.party[t2.atual].a[t2.actions[1]].power, t2.party[t2.atual].a[t2.actions[1]].tipodoataque, t2.party[t2.atual].tipo, t1.party[t1.atual].tipo);
 						t1.party[t1.atual].hitpoints -= dmg2;
 						System.out.println("Deu " + dmg2 + " de dano!");
 						if (t1.party[t1.atual].hitpoints > 0) {
 							System.out.println(t1.party[t1.atual].name + " usou " + t1.party[t1.atual].a[t1.actions[1]].name + "!");
-							int dmg = Damage.dano(t1.party[t1.atual].attack, t2.party[t2.atual].defense, t1.party[t1.atual].a[t1.actions[1]].power);
+							int dmg = Damage.dano(t1.party[t1.atual].attack, t2.party[t2.atual].defense, t1.party[t1.atual].a[t1.actions[1]].power, t1.party[t1.atual].a[t1.actions[1]].tipodoataque, t1.party[t1.atual].tipo, t2.party[t2.atual].tipo);
 							t2.party[t2.atual].hitpoints -= dmg;
 							System.out.println("Deu " + dmg + " de dano!");
 							if (t2.party[t2.atual].hitpoints < 0) {
@@ -809,7 +809,7 @@ public class Batalha extends Controller {
 				else {
 					System.out.println("O Pokémon se livrou!");
 					System.out.println(wild.name + " usou " + wild.a[wildAction].name + "!");
-					int dmg = Damage.dano(wild.attack, t1.party[t1.atual].defense, wild.a[wildAction].power);
+					int dmg = Damage.dano(wild.attack, t1.party[t1.atual].defense, wild.a[wildAction].power,wild.a[wildAction].tipodoataque, wild.tipo, t1.party[t1.atual].tipo);
 					t1.party[t1.atual].hitpoints -= dmg;
 					System.out.println("Deu " + dmg + " de dano!");
 					if (t1.party[t1.atual].hitpoints <= 0) {
@@ -848,7 +848,7 @@ public class Batalha extends Controller {
 			else if (t1.actions[0] == 2){
 				System.out.println("Você trocou para o pokemon "+ t1.party[t1.atual].name);
 				System.out.println(wild.name + " usou " + wild.a[wildAction].name + "!");
-				int dmg = Damage.dano(wild.attack, t1.party[t1.atual].defense, wild.a[wildAction].power);
+				int dmg = Damage.dano(wild.attack, t1.party[t1.atual].defense, wild.a[wildAction].power, wild.a[wildAction].tipodoataque, wild.tipo, t1.party[t1.atual].tipo);
 				t1.party[t1.atual].hitpoints -= dmg;
 				System.out.println("Deu " + dmg + " de dano!");
 				if (t1.party[t1.atual].hitpoints <= 0) {
@@ -886,12 +886,12 @@ public class Batalha extends Controller {
 			else {
 				if (t1.party[t1.atual].a[t1.actions[1]].priority > wild.a[wildAction].priority) {
 					System.out.println(t1.party[t1.atual].name + " usou " + t1.party[t1.atual].a[t1.actions[1]].name + "!");
-					int dmg = Damage.dano(t1.party[t1.atual].attack, wild.defense, t1.party[t1.atual].a[t1.actions[1]].power);
+					int dmg = Damage.dano(t1.party[t1.atual].attack, wild.defense, t1.party[t1.atual].a[t1.actions[1]].power, t1.party[t1.atual].a[t1.actions[1]].tipodoataque, t1.party[t1.atual].tipo, wild.tipo);
 					wild.hitpoints -= dmg;
 					System.out.println("Deu " + dmg + " de dano!");
 					if (wild.hitpoints > 0) {
 						System.out.println(wild.name + " usou " + wild.a[wildAction].name + "!");
-						int dmg2 = Damage.dano(wild.attack, t1.party[t1.atual].defense, wild.a[wildAction].power);
+						int dmg2 = Damage.dano(wild.attack, t1.party[t1.atual].defense, wild.a[wildAction].power, wild.a[wildAction].tipodoataque, wild.tipo, t1.party[t1.atual].tipo);
 						t1.party[t1.atual].hitpoints -= dmg2;
 						System.out.println("Deu " + dmg2 + " de dano!");
 						if (t1.party[t1.atual].hitpoints <= 0) {
@@ -932,12 +932,12 @@ public class Batalha extends Controller {
 				}
 				else if (t1.party[t1.atual].a[t1.actions[1]].priority < wild.a[wildAction].priority) {
 					System.out.println(wild.name + " usou " + wild.a[wildAction].name + "!");
-					int dmg2 = Damage.dano(wild.attack, t1.party[t1.atual].defense, wild.a[wildAction].power);
+					int dmg2 = Damage.dano(wild.attack, t1.party[t1.atual].defense, wild.a[wildAction].power, wild.a[wildAction].tipodoataque, wild.tipo, t1.party[t1.atual].tipo);
 					t1.party[t1.atual].hitpoints -= dmg2;
 					System.out.println("Deu " + dmg2 + " de dano!");
 					if (t1.party[t1.atual].hitpoints > 0) {
 						System.out.println(t1.party[t1.atual].name + " usou " + t1.party[t1.atual].a[t1.actions[1]].name + "!");
-						int dmg = Damage.dano(t1.party[t1.atual].attack, wild.defense, t1.party[t1.atual].a[t1.actions[1]].power);
+						int dmg = Damage.dano(t1.party[t1.atual].attack, wild.defense, t1.party[t1.atual].a[t1.actions[1]].power, t1.party[t1.atual].a[t1.actions[1]].tipodoataque, t1.party[t1.atual].tipo, wild.tipo);
 						wild.hitpoints -= dmg;
 						System.out.println("Deu " + dmg + " de dano!");
 						if (wild.hitpoints <= 0) {
@@ -979,12 +979,12 @@ public class Batalha extends Controller {
 				else {
 					if (t1.party[t1.atual].speed > wild.speed) {
 						System.out.println(t1.party[t1.atual].name + " usou " + t1.party[t1.atual].a[t1.actions[1]].name + "!");
-						int dmg = Damage.dano(t1.party[t1.atual].attack, wild.defense, t1.party[t1.atual].a[t1.actions[1]].power);
+						int dmg = Damage.dano(t1.party[t1.atual].attack, wild.defense, t1.party[t1.atual].a[t1.actions[1]].power, t1.party[t1.atual].a[t1.actions[1]].tipodoataque, t1.party[t1.atual].tipo, wild.tipo);
 						wild.hitpoints -= dmg;
 						System.out.println("Deu " + dmg + " de dano!");
 						if (wild.hitpoints > 0) {
 							System.out.println(wild.name + " usou " + wild.a[wildAction].name + "!");
-							int dmg2 = Damage.dano(wild.attack, t1.party[t1.atual].defense, wild.a[wildAction].power);
+							int dmg2 = Damage.dano(wild.attack, t1.party[t1.atual].defense, wild.a[wildAction].power, wild.a[wildAction].tipodoataque, wild.tipo, t1.party[t1.atual].tipo);
 							t1.party[t1.atual].hitpoints -= dmg2;
 							System.out.println("Deu " + dmg2 + " de dano!");
 							if (t1.party[t1.atual].hitpoints <= 0) {
@@ -1025,12 +1025,12 @@ public class Batalha extends Controller {
 					}
 					else {
 						System.out.println(wild.name + " usou " + wild.a[wildAction].name + "!");
-						int dmg2 = Damage.dano(wild.attack, t1.party[t1.atual].defense, wild.a[wildAction].power);
+						int dmg2 = Damage.dano(wild.attack, t1.party[t1.atual].defense, wild.a[wildAction].power, wild.a[wildAction].tipodoataque, wild.tipo, t1.party[t1.atual].tipo);
 						t1.party[t1.atual].hitpoints -= dmg2;
 						System.out.println("Deu " + dmg2 + " de dano!");
 						if (t1.party[t1.atual].hitpoints > 0) {
 							System.out.println(t1.party[t1.atual].name + " usou " + t1.party[t1.atual].a[t1.actions[1]].name + "!");
-							int dmg = Damage.dano(t1.party[t1.atual].attack, wild.defense, t1.party[t1.atual].a[t1.actions[1]].power);
+							int dmg = Damage.dano(t1.party[t1.atual].attack, wild.defense, t1.party[t1.atual].a[t1.actions[1]].power, t1.party[t1.atual].a[t1.actions[1]].tipodoataque, t1.party[t1.atual].tipo, wild.tipo);
 							wild.hitpoints -= dmg;
 							System.out.println("Deu " + dmg + " de dano!");
 							if (wild.hitpoints < 0) {

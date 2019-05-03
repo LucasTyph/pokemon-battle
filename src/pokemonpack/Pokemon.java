@@ -1,6 +1,6 @@
 package pokemonpack;
 
-public class Pokemon {
+public class Pokemon implements Tipos{
 	public int tipo;
 	public int hitpoints;
 	public int attack;

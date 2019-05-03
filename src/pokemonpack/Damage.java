@@ -1,7 +1,7 @@
 package pokemonpack;
 
 public class Damage {
-	public static int dano (int atk, int def, int pwr, int tipofense, int tipdefense) {
+	public static int dano (int atk, int def, int pwr, int tipmove, int tipofense, int tipdefense) {
 		double tab[][] = new double[18][18];{
 			tab[0][0] = 1.0; tab[0][1] = 1.0; tab[0][2] = 1.0; tab[0][3] = 1.0; tab[0][4] = 1.0; tab[0][5] = 0.5; tab[0][6] = 1.0; tab[0][7] = 0.0; tab[0][8] = 0.5; tab[0][9] = 1.0; tab[0][10] = 1.0; tab[0][11] = 1.0; tab[0][12] = 1.0; tab[0][13] = 1.0; tab[0][14] = 1.0; tab[0][15] = 1.0; tab[0][16] = 1.0; tab[0][17] = 1.0;
 			tab[1][0] = 2.0; tab[1][1] = 1.0; tab[1][2] = 0.5; tab[1][3] = 0.5; tab[1][4] = 1.0; tab[1][5] = 2.0; tab[1][6] = 0.5; tab[1][7] = 0.0; tab[1][8] = 2.0; tab[1][9] = 1.0; tab[1][10] = 1.0; tab[1][11] = 1.0; tab[1][12] = 1.0; tab[1][13] = 0.5; tab[1][14] = 2.0; tab[1][15] = 1.0; tab[1][16] = 2.0; tab[1][17] = 0.5;
@@ -24,6 +24,17 @@ public class Damage {
 		}
 		double random = Math.random()*(0.15)+0.85;
 		double critical =  Math.round(Math.random()/1.6);
-		return (int)(((42*pwr*atk/50/def)+2)*(1 + critical/2)*tab[tipofense][tipdefense]*random);
+		double stab;
+		if (tipmove == tipofense)
+			stab = 1.5;
+		else
+			stab = 1.0;
+		if (tab[tipmove][tipdefense] == 2.0)
+			System.out.println("It's super effective");
+		if (tab[tipmove][tipdefense] == 0.5)
+			System.out.println("It's not very effective");
+		if (critical == 1.0)
+			System.out.println("It's a critical hit");
+		return (int)(((42*pwr*atk/50/def)+2)*(1 + critical/2)*tab[tipmove][tipdefense]*stab*random);
 	}
 }
