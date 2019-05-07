@@ -4,7 +4,7 @@ Programa feito por Lucas de Menezes (NUSP 10770180) e Vinícius Lopes (NUSP 1077
 
 # Instruções
 
-O jogo funciona à base de input de números inteiros pelo usuário. Cada ação é indicada por um número entre colchetes. Por favor não insira elementos que não são números inteiros.
+O jogo funciona à base de input de números inteiros pelo usuário. Cada ação é indicada por um número entre colchetes -- digite o número da ação desejada e aperte Enter para registrá-la.
 
 Para começar, escolha '1' para acessar o modo Versus, e '2' para acessar o modo Wild.
 
