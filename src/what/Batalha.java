@@ -1234,7 +1234,7 @@ public class Batalha extends Controller {
 		System.out.println("[1] Batalha 6 vs 6");
 		System.out.println("[2] Encontre pokemon selvagens mundo afora!");
 		while (!leitura.hasNextInt()) {
-			System.out.println("Utilize numeros inteiros, por favor!");
+			System.out.println("Utilize numeros inteiros, por favor.");
 			leitura.nextLine();
 		}
 		modo = leitura.nextInt();
