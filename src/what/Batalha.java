@@ -108,6 +108,10 @@ public class Batalha extends Controller {
 			System.out.println("Treinador 1, faca sua escolha:");
 			System.out.println("[1] Atacar / [2] Trocar");
 			System.out.println("[3] Item / [4] Fugir");
+			while (!leitura.hasNextInt()) {
+				System.out.println("Utilize numeros inteiros, por favor!");
+				leitura.nextLine();
+			}
 			choice = leitura.nextInt();
 			while (choice > 4 || choice < 1) {
 				System.out.println("Acao invalida");
@@ -121,6 +125,10 @@ public class Batalha extends Controller {
 				System.out.println("[2] " + t1.party[t1.atual].a[2].name);
 				System.out.println("[3] " + t1.party[t1.atual].a[3].name);
 				System.out.println("[4] " + t1.party[t1.atual].a[4].name);
+				while (!leitura.hasNextInt()) {
+					System.out.println("Utilize numeros inteiros, por favor!");
+					leitura.nextLine();
+				}
 				choice = leitura.nextInt();
 				while (choice > 4 || choice < 1) {
 					System.out.println("Ataque invalido");
@@ -136,6 +144,10 @@ public class Batalha extends Controller {
 				System.out.println("[4] " + t1.party[3].name + ", "+ t1.party[3].hitpoints + "/" + t1.party[3].hpmax + " HP.");
 				System.out.println("[5] " + t1.party[4].name + ", "+ t1.party[4].hitpoints + "/" + t1.party[4].hpmax + " HP.");
 				System.out.println("[6] " + t1.party[5].name + ", "+ t1.party[5].hitpoints + "/" + t1.party[5].hpmax + " HP.");
+				while (!leitura.hasNextInt()) {
+					System.out.println("Utilize numeros inteiros, por favor!");
+					leitura.nextLine();
+				}
 				choice = leitura.nextInt();
 				while ((choice > 6 || choice < 1) || t1.party[choice-1].hitpoints <= 0) { //checar tambem se o pokemon esta morto
 					if (choice >6 || choice < 1)
@@ -173,6 +185,10 @@ public class Batalha extends Controller {
 			System.out.println("Treinador 2, faca sua escolha:");
 			System.out.println("[1] Atacar / [2] Trocar");
 			System.out.println("[3] Item / [4] Fugir");
+			while (!leitura.hasNextInt()) {
+				System.out.println("Utilize numeros inteiros, por favor!");
+				leitura.nextLine();
+			}
 			choice = leitura.nextInt();
 			while (choice > 4 || choice < 1) {
 				System.out.println("Acao invalida");
@@ -186,6 +202,10 @@ public class Batalha extends Controller {
 				System.out.println("[2] " + t2.party[t2.atual].a[2].name);
 				System.out.println("[3] " + t2.party[t2.atual].a[3].name);
 				System.out.println("[4] " + t2.party[t2.atual].a[4].name);
+				while (!leitura.hasNextInt()) {
+					System.out.println("Utilize numeros inteiros, por favor!");
+					leitura.nextLine();
+				}
 				choice = leitura.nextInt();
 				while (choice > 4 || choice < 1) {
 					System.out.println("Ataque invalido");
@@ -201,6 +221,10 @@ public class Batalha extends Controller {
 				System.out.println("[4] " + t2.party[3].name + ", "+ t2.party[3].hitpoints + "/" + t2.party[3].hpmax + " HP.");
 				System.out.println("[5] " + t2.party[4].name + ", "+ t2.party[4].hitpoints + "/" + t2.party[4].hpmax + " HP.");
 				System.out.println("[6] " + t2.party[5].name + ", "+ t2.party[5].hitpoints + "/" + t2.party[5].hpmax + " HP.");
+				while (!leitura.hasNextInt()) {
+					System.out.println("Utilize numeros inteiros, por favor!");
+					leitura.nextLine();
+				}
 				choice = leitura.nextInt();
 				while ((choice > 6 || choice < 1) || t2.party[choice-1].hitpoints <= 0) { //checar tambem se o pokemon esta morto
 					if (choice > 6 || choice < 1)
@@ -280,6 +304,10 @@ public class Batalha extends Controller {
 					System.out.println("[4] " + t2.party[3].name + ", "+ t2.party[3].hitpoints + "/" + t2.party[3].hpmax + " HP.");
 					System.out.println("[5] " + t2.party[4].name + ", "+ t2.party[4].hitpoints + "/" + t2.party[4].hpmax + " HP.");
 					System.out.println("[6] " + t2.party[5].name + ", "+ t2.party[5].hitpoints + "/" + t2.party[5].hpmax + " HP.");
+					while (!leitura.hasNextInt()) {
+						System.out.println("Utilize numeros inteiros, por favor!");
+						leitura.nextLine();
+					}
 					int choice = leitura.nextInt();
 					while ((choice > 6 || choice < 1) || t2.party[choice-1].hitpoints <= 0) { //checar tambem se o pokemon esta morto
 						if (choice > 6 || choice < 1)
@@ -312,6 +340,10 @@ public class Batalha extends Controller {
 					System.out.println("[4] " + t1.party[3].name + ", "+ t1.party[3].hitpoints + "/" + t1.party[3].hpmax + " HP.");
 					System.out.println("[5] " + t1.party[4].name + ", "+ t1.party[4].hitpoints + "/" + t1.party[4].hpmax + " HP.");
 					System.out.println("[6] " + t1.party[5].name + ", "+ t1.party[5].hitpoints + "/" + t1.party[5].hpmax + " HP.");
+					while (!leitura.hasNextInt()) {
+						System.out.println("Utilize numeros inteiros, por favor!");
+						leitura.nextLine();
+					}
 					int choice = leitura.nextInt();
 					while ((choice > 6 || choice < 1) || t1.party[choice-1].hitpoints <= 0) { //checar tambem se o pokemon esta morto
 						if (choice > 6 || choice < 1)
@@ -350,6 +382,10 @@ public class Batalha extends Controller {
 							System.out.println("[4] " + t1.party[3].name + ", "+ t1.party[3].hitpoints + "/" + t1.party[3].hpmax + " HP.");
 							System.out.println("[5] " + t1.party[4].name + ", "+ t1.party[4].hitpoints + "/" + t1.party[4].hpmax + " HP.");
 							System.out.println("[6] " + t1.party[5].name + ", "+ t1.party[5].hitpoints + "/" + t1.party[5].hpmax + " HP.");
+							while (!leitura.hasNextInt()) {
+								System.out.println("Utilize numeros inteiros, por favor!");
+								leitura.nextLine();
+							}
 							int choice = leitura.nextInt();
 							while ((choice > 6 || choice < 1) || t1.party[choice-1].hitpoints <= 0) { //checar tambem se o pokemon esta morto
 								if (choice > 6 || choice < 1)
@@ -377,6 +413,10 @@ public class Batalha extends Controller {
 						System.out.println("[4] " + t2.party[3].name + ", "+ t2.party[3].hitpoints + "/" + t2.party[3].hpmax + " HP.");
 						System.out.println("[5] " + t2.party[4].name + ", "+ t2.party[4].hitpoints + "/" + t2.party[4].hpmax + " HP.");
 						System.out.println("[6] " + t2.party[5].name + ", "+ t2.party[5].hitpoints + "/" + t2.party[5].hpmax + " HP.");
+						while (!leitura.hasNextInt()) {
+							System.out.println("Utilize numeros inteiros, por favor!");
+							leitura.nextLine();
+						}
 						int choice = leitura.nextInt();
 						while ((choice > 6 || choice < 1) || t2.party[choice-1].hitpoints <= 0) { //checar tambem se o pokemon esta morto
 							if (choice > 6 || choice < 1)
@@ -414,6 +454,10 @@ public class Batalha extends Controller {
 							System.out.println("[4] " + t2.party[3].name + ", "+ t2.party[3].hitpoints + "/" + t2.party[3].hpmax + " HP.");
 							System.out.println("[5] " + t2.party[4].name + ", "+ t2.party[4].hitpoints + "/" + t2.party[4].hpmax + " HP.");
 							System.out.println("[6] " + t2.party[5].name + ", "+ t2.party[5].hitpoints + "/" + t2.party[5].hpmax + " HP.");
+							while (!leitura.hasNextInt()) {
+								System.out.println("Utilize numeros inteiros, por favor!");
+								leitura.nextLine();
+							}
 							int choice = leitura.nextInt();
 							while ((choice > 6 || choice < 1) || t2.party[choice-1].hitpoints <= 0) { //checar tambem se o pokemon esta morto
 								if (choice > 6 || choice < 1)
@@ -441,6 +485,10 @@ public class Batalha extends Controller {
 						System.out.println("[4] " + t1.party[3].name + ", "+ t1.party[3].hitpoints + "/" + t1.party[3].hpmax + " HP.");
 						System.out.println("[5] " + t1.party[4].name + ", "+ t1.party[4].hitpoints + "/" + t1.party[4].hpmax + " HP.");
 						System.out.println("[6] " + t1.party[5].name + ", "+ t1.party[5].hitpoints + "/" + t1.party[5].hpmax + " HP.");
+						while (!leitura.hasNextInt()) {
+							System.out.println("Utilize numeros inteiros, por favor!");
+							leitura.nextLine();
+						}
 						int choice = leitura.nextInt();
 						while ((choice > 6 || choice < 1) || t1.party[choice-1].hitpoints <= 0) { //checar tambem se o pokemon esta morto
 							if (choice > 6 || choice < 1)
@@ -479,6 +527,10 @@ public class Batalha extends Controller {
 								System.out.println("[4] " + t1.party[3].name + ", "+ t1.party[3].hitpoints + "/" + t1.party[3].hpmax + " HP.");
 								System.out.println("[5] " + t1.party[4].name + ", "+ t1.party[4].hitpoints + "/" + t1.party[4].hpmax + " HP.");
 								System.out.println("[6] " + t1.party[5].name + ", "+ t1.party[5].hitpoints + "/" + t1.party[5].hpmax + " HP.");
+								while (!leitura.hasNextInt()) {
+									System.out.println("Utilize numeros inteiros, por favor!");
+									leitura.nextLine();
+								}
 								int choice = leitura.nextInt();
 								while ((choice > 6 || choice < 1) || t1.party[choice-1].hitpoints <= 0) { //checar tambem se o pokemon esta morto
 									if (choice > 6 || choice < 1)
@@ -506,6 +558,10 @@ public class Batalha extends Controller {
 							System.out.println("[4] " + t2.party[3].name + ", "+ t2.party[3].hitpoints + "/" + t2.party[3].hpmax + " HP.");
 							System.out.println("[5] " + t2.party[4].name + ", "+ t2.party[4].hitpoints + "/" + t2.party[4].hpmax + " HP.");
 							System.out.println("[6] " + t2.party[5].name + ", "+ t2.party[5].hitpoints + "/" + t2.party[5].hpmax + " HP.");
+							while (!leitura.hasNextInt()) {
+								System.out.println("Utilize numeros inteiros, por favor!");
+								leitura.nextLine();
+							}
 							int choice = leitura.nextInt();
 							while ((choice > 6 || choice < 1) || t2.party[choice-1].hitpoints <= 0) { //checar tambem se o pokemon esta morto
 								if (choice > 6 || choice < 1)
@@ -543,6 +599,10 @@ public class Batalha extends Controller {
 								System.out.println("[4] " + t2.party[3].name + ", "+ t2.party[3].hitpoints + "/" + t2.party[3].hpmax + " HP.");
 								System.out.println("[5] " + t2.party[4].name + ", "+ t2.party[4].hitpoints + "/" + t2.party[4].hpmax + " HP.");
 								System.out.println("[6] " + t2.party[5].name + ", "+ t2.party[5].hitpoints + "/" + t2.party[5].hpmax + " HP.");
+								while (!leitura.hasNextInt()) {
+									System.out.println("Utilize numeros inteiros, por favor!");
+									leitura.nextLine();
+								}
 								int choice = leitura.nextInt();
 								while ((choice > 6 || choice < 1) || t2.party[choice-1].hitpoints <= 0) { //checar tambem se o pokemon esta morto
 									if (choice > 6 || choice < 1)
@@ -570,6 +630,10 @@ public class Batalha extends Controller {
 							System.out.println("[4] " + t1.party[3].name + ", "+ t1.party[3].hitpoints + "/" + t1.party[3].hpmax + " HP.");
 							System.out.println("[5] " + t1.party[4].name + ", "+ t1.party[4].hitpoints + "/" + t1.party[4].hpmax + " HP.");
 							System.out.println("[6] " + t1.party[5].name + ", "+ t1.party[5].hitpoints + "/" + t1.party[5].hpmax + " HP.");
+							while (!leitura.hasNextInt()) {
+								System.out.println("Utilize numeros inteiros, por favor!");
+								leitura.nextLine();
+							}
 							int choice = leitura.nextInt();
 							while ((choice > 6 || choice < 1) || t1.party[choice-1].hitpoints <= 0) { //checar tambem se o pokemon esta morto
 								if (choice > 6 || choice < 1)
@@ -619,6 +683,10 @@ public class Batalha extends Controller {
 			System.out.println("[149]: Dragonite");
 			System.out.print("Treinador 1, escolha seus 6 Pokemon pelo numero da Pokedex: ");
 			for (int i=0; i<6; i++) {
+				while (!leitura.hasNextInt()) {
+					System.out.println("Utilize numeros inteiros, por favor!");
+					leitura.nextLine();
+				}
 				party[i] = leitura.nextInt();
 				if (contains(possiblePokemon, party[i])) {
 					t1.party[i] = newPoke(party[i]);
@@ -631,6 +699,10 @@ public class Batalha extends Controller {
 			}
 			System.out.print("Treinador 2, agora e' a sua vez: ");
 			for (int i=0; i<6; i++) {
+				while (!leitura.hasNextInt()) {
+					System.out.println("Utilize numeros inteiros, por favor!");
+					leitura.nextLine();
+				}
 				party[i] = leitura.nextInt();
 				if (contains(possiblePokemon, party[i])) {
 					t2.party[i] = newPoke(party[i]);
@@ -675,6 +747,10 @@ public class Batalha extends Controller {
 			System.out.println("[149]: Dragonite");
 			System.out.println("Escolha tres parceiros para te acompanhar em sua jornada pelo numero da Pokedex:");
 			for (int i=0; i<3; i++) {
+				while (!leitura.hasNextInt()) {
+					System.out.println("Utilize numeros inteiros, por favor!");
+					leitura.nextLine();
+				}
 				party[i] = leitura.nextInt();
 				if (contains(possiblePokemon, party[i])) {
 					t1.party[i] = newPoke(party[i]);
@@ -694,6 +770,10 @@ public class Batalha extends Controller {
 	public class worldWalking extends Event{
 		public void action() {
 			System.out.println("[1] Continuar na trilha / [2] Entrar no gramado");
+			while (!leitura.hasNextInt()) {
+				System.out.println("Utilize numeros inteiros, por favor!");
+				leitura.nextLine();
+			}
 			int modo = leitura.nextInt();
 			while (modo>2 || modo<1) {
 				System.out.println("Por favor insira um valor valido!");
@@ -729,6 +809,10 @@ public class Batalha extends Controller {
 			System.out.println("Treinador, faca sua escolha:");
 			System.out.println("[1] Atacar / [2] Trocar");
 			System.out.println("[3] Item / [4] Fugir");
+			while (!leitura.hasNextInt()) {
+				System.out.println("Utilize numeros inteiros, por favor!");
+				leitura.nextLine();
+			}
 			choice = leitura.nextInt();
 			while (choice > 4 || choice < 1) {
 				System.out.println("Acao invalida");
@@ -742,6 +826,10 @@ public class Batalha extends Controller {
 				System.out.println("[2] " + t1.party[t1.atual].a[2].name);
 				System.out.println("[3] " + t1.party[t1.atual].a[3].name);
 				System.out.println("[4] " + t1.party[t1.atual].a[4].name);
+				while (!leitura.hasNextInt()) {
+					System.out.println("Utilize numeros inteiros, por favor!");
+					leitura.nextLine();
+				}
 				choice = leitura.nextInt();
 				while (choice > 4 || choice < 1) {
 					System.out.println("Ataque invalido");
@@ -762,6 +850,10 @@ public class Batalha extends Controller {
 				}
 				if (t1.party[5] != null) {
 					System.out.println("[6] " + t1.party[5].name + ", "+ t1.party[5].hitpoints + "/" + t1.party[5].hpmax + " HP.");
+				}
+				while (!leitura.hasNextInt()) {
+					System.out.println("Utilize numeros inteiros, por favor!");
+					leitura.nextLine();
 				}
 				choice = leitura.nextInt();
 				while ((choice > 6 || choice < 1) || t1.party[choice-1]==null || t1.party[choice-1].hitpoints <= 0) { //checar tambem se o pokemon esta morto
@@ -843,6 +935,10 @@ public class Batalha extends Controller {
 						if (t1.party[5] != null) {
 							System.out.println("[6] " + t1.party[5].name + ", "+ t1.party[5].hitpoints + "/" + t1.party[5].hpmax + " HP.");
 						}
+						while (!leitura.hasNextInt()) {
+							System.out.println("Utilize numeros inteiros, por favor!");
+							leitura.nextLine();
+						}
 						int choice = leitura.nextInt();
 						while ((choice > 6 || choice < 1) || t1.party[choice-1]==null || t1.party[choice-1].hitpoints <= 0) { //checar tambem se o pokemon esta morto
 							if (choice > 6 || choice < 1)
@@ -882,6 +978,10 @@ public class Batalha extends Controller {
 					}
 					if (t1.party[5] != null) {
 						System.out.println("[6] " + t1.party[5].name + ", "+ t1.party[5].hitpoints + "/" + t1.party[5].hpmax + " HP.");
+					}
+					while (!leitura.hasNextInt()) {
+						System.out.println("Utilize numeros inteiros, por favor!");
+						leitura.nextLine();
 					}
 					int choice = leitura.nextInt();
 					while ((choice > 6 || choice < 1) || t1.party[choice-1]==null || t1.party[choice-1].hitpoints <= 0) { //checar tambem se o pokemon esta morto
@@ -926,6 +1026,10 @@ public class Batalha extends Controller {
 							}
 							if (t1.party[5] != null) {
 								System.out.println("[6] " + t1.party[5].name + ", "+ t1.party[5].hitpoints + "/" + t1.party[5].hpmax + " HP.");
+							}
+							while (!leitura.hasNextInt()) {
+								System.out.println("Utilize numeros inteiros, por favor!");
+								leitura.nextLine();
 							}
 							int choice = leitura.nextInt();
 							while ((choice > 6 || choice < 1) || t1.party[choice-1]==null || t1.party[choice-1].hitpoints <= 0) { //checar tambem se o pokemon esta morto
@@ -978,6 +1082,10 @@ public class Batalha extends Controller {
 						if (t1.party[5] != null) {
 							System.out.println("[6] " + t1.party[5].name + ", "+ t1.party[5].hitpoints + "/" + t1.party[5].hpmax + " HP.");
 						}
+						while (!leitura.hasNextInt()) {
+							System.out.println("Utilize numeros inteiros, por favor!");
+							leitura.nextLine();
+						}
 						int choice = leitura.nextInt();
 						while ((choice > 6 || choice < 1) || t1.party[choice-1]==null || t1.party[choice-1].hitpoints <= 0) { //checar tambem se o pokemon esta morto
 							if (choice > 6 || choice < 1)
@@ -1021,6 +1129,10 @@ public class Batalha extends Controller {
 								}
 								if (t1.party[5] != null) {
 									System.out.println("[6] " + t1.party[5].name + ", "+ t1.party[5].hitpoints + "/" + t1.party[5].hpmax + " HP.");
+								}
+								while (!leitura.hasNextInt()) {
+									System.out.println("Utilize numeros inteiros, por favor!");
+									leitura.nextLine();
 								}
 								int choice = leitura.nextInt();
 								while ((choice > 6 || choice < 1) || t1.party[choice-1]==null || t1.party[choice-1].hitpoints <= 0) { //checar tambem se o pokemon esta morto
@@ -1073,6 +1185,10 @@ public class Batalha extends Controller {
 							if (t1.party[5] != null) {
 								System.out.println("[6] " + t1.party[5].name + ", "+ t1.party[5].hitpoints + "/" + t1.party[5].hpmax + " HP.");
 							}
+							while (!leitura.hasNextInt()) {
+								System.out.println("Utilize numeros inteiros, por favor!");
+								leitura.nextLine();
+							}
 							int choice = leitura.nextInt();
 							while ((choice > 6 || choice < 1) || t1.party[choice-1]==null || t1.party[choice-1].hitpoints <= 0) { //checar tambem se o pokemon esta morto
 								if (choice > 6 || choice < 1)
@@ -1117,6 +1233,10 @@ public class Batalha extends Controller {
 		System.out.println("Escolha o modo de jogo: ");
 		System.out.println("[1] Batalha 6 vs 6");
 		System.out.println("[2] Encontre pokemon selvagens mundo afora!");
+		while (!leitura.hasNextInt()) {
+			System.out.println("Utilize numeros inteiros, por favor!");
+			leitura.nextLine();
+		}
 		modo = leitura.nextInt();
 		while (modo>2 || modo<1) {
 			System.out.println("Por favor insira um valor valido!");
