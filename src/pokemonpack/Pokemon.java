@@ -3,8 +3,8 @@ package pokemonpack;
 public class Pokemon implements Tipos{
 	public int tipo;
 	public int hitpoints;
-	public int attack;
-	public int defense;
+	public double attack;
+	public double defense;
 	public int speed;
 	public int dexNum;
 	public int hpmax;
