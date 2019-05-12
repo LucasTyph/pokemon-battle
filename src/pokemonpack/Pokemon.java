@@ -2,6 +2,7 @@ package pokemonpack;
 
 public class Pokemon implements Tipos{
 	public int tipo;
+	public int tiposec;
 	public int hitpoints;
 	public double attack;
 	public double defense;
@@ -11,7 +12,7 @@ public class Pokemon implements Tipos{
 	public String name;
 	public Attack a[] = new Attack[5];
 	
-	Pokemon (int tip, int hp, int a, int d, int s, int num, String name){
+	Pokemon (int tip, int tips, int hp, int a, int d, int s, int num, String name){
 		this.attack=a;
 		this.hitpoints=hp;
 		this.defense=d;
@@ -20,5 +21,6 @@ public class Pokemon implements Tipos{
 		this.name = name;
 		this.hpmax=hp;
 		this.tipo=tip;
+		this.tiposec = tips;
 	}
 }
