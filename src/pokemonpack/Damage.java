@@ -1,7 +1,7 @@
 package pokemonpack;
 
 public class Damage {
-	public static int dano (double atk, double def, int pwr, int tipmove, int tipofense, int tipdefense) {
+	public static int dano (double atk, double def, int pwr, int tiphit, int tipmove, int tipofense, int tipdefense) {
 		double tab[][] = new double[18][18];{
 			tab[0][0] = 1.0; tab[0][1] = 1.0; tab[0][2] = 1.0; tab[0][3] = 1.0; tab[0][4] = 1.0; tab[0][5] = 0.5; tab[0][6] = 1.0; tab[0][7] = 0.0; tab[0][8] = 0.5; tab[0][9] = 1.0; tab[0][10] = 1.0; tab[0][11] = 1.0; tab[0][12] = 1.0; tab[0][13] = 1.0; tab[0][14] = 1.0; tab[0][15] = 1.0; tab[0][16] = 1.0; tab[0][17] = 1.0;
 			tab[1][0] = 2.0; tab[1][1] = 1.0; tab[1][2] = 0.5; tab[1][3] = 0.5; tab[1][4] = 1.0; tab[1][5] = 2.0; tab[1][6] = 0.5; tab[1][7] = 0.0; tab[1][8] = 2.0; tab[1][9] = 1.0; tab[1][10] = 1.0; tab[1][11] = 1.0; tab[1][12] = 1.0; tab[1][13] = 0.5; tab[1][14] = 2.0; tab[1][15] = 1.0; tab[1][16] = 2.0; tab[1][17] = 0.5;
@@ -22,19 +22,83 @@ public class Damage {
 			tab[16][0] = 1.0; tab[16][1] = 0.5; tab[16][2] = 1.0; tab[16][3] = 1.0; tab[16][4] = 1.0; tab[16][5] = 1.0; tab[16][6] = 1.0; tab[16][7] = 2.0; tab[16][8] = 1.0; tab[16][9] = 1.0; tab[16][10] = 1.0; tab[16][11] = 1.0; tab[16][12] = 1.0; tab[16][13] = 2.0; tab[16][14] = 1.0; tab[16][15] = 1.0; tab[16][16] = 0.5; tab[16][17] = 0.5;
 			tab[17][0] = 1.0; tab[17][1] = 2.0; tab[17][2] = 1.0; tab[17][3] = 0.5; tab[17][4] = 1.0; tab[17][5] = 1.0; tab[17][6] = 1.0; tab[17][7] = 1.0; tab[17][8] = 0.5; tab[17][9] = 0.5; tab[17][10] = 1.0; tab[17][11] = 1.0; tab[17][12] = 1.0; tab[17][13] = 1.0; tab[17][14] = 1.0; tab[17][15] = 2.0; tab[17][16] = 2.0; tab[17][17] = 1.0;
 		}
-		double random = Math.random()*(0.15)+0.85;
-		double critical =  Math.round(Math.random()/1.6);
+		double random;
+		double critical;
 		double stab;
+		int cont = 0;
 		if (tipmove == tipofense)
 			stab = 1.5;
 		else
 			stab = 1.0;
-		if (tab[tipmove][tipdefense] == 2.0)
-			System.out.println("It's super effective");
-		if (tab[tipmove][tipdefense] == 0.5)
-			System.out.println("It's not very effective");
-		if (critical == 1.0)
-			System.out.println("It's a critical hit");
-		return (int)((((42*pwr*(atk/def))/50.0)+2)*(1 + critical/2)*tab[tipmove][tipdefense]*stab*random);
+		int dmg = 0;
+		if (tab[tipmove][tipdefense] == 0.0) { // Aqui verificamos uma condição extraordinaria de damage = 0
+			System.out.println("the opponent is immune to this attack");
+			return dmg;
+		}
+		if (tipmove == tipofense) // aqui, verifica-se o stab
+			stab = 1.5;
+		else
+			stab = 1.0;
+		
+		switch (tiphit) {
+		
+		case 1: // Ataques deste tipo "hitam" apenas uma vez
+			random = Math.random()*(0.15)+0.85;
+			critical =  Math.round(Math.random()/1.6);
+
+			if (tab[tipmove][tipdefense] == 2.0)
+				System.out.println("It's super effective");
+			if (tab[tipmove][tipdefense] == 0.5)
+				System.out.println("It's not very effective");
+			if (critical == 1.0)
+				System.out.println("It's a critical hit");
+			dmg = (int)((((42*pwr*(atk/def))/50.0)+2)*(1 + critical/2)*tab[tipmove][tipdefense]*stab*random);
+			break;
+			
+		case 2: // Ataques deste tipo "hitam" de 2 a 5 vezes. Pin Missile, Spike Cannon e Fury Swipes são exemplos
+			int parcial;
+			int number = (int) Math.round(Math.random()*3) + 2;
+			if (tipmove == tipofense)
+				stab = 1.5;
+			else
+				stab = 1.0;
+			
+			while ( cont < number ) {
+				random = Math.random()*(0.15)+0.85;
+				critical =  Math.round(Math.random()/1.6);
+				parcial = dmg;
+				if (tab[tipmove][tipdefense] == 2.0)
+					System.out.println("It's super effective");
+				if (tab[tipmove][tipdefense] == 0.5)
+					System.out.println("It's not very effective");
+				if (critical == 1.0)
+					System.out.println("It's a critical hit");
+				System.out.println("It's " + (cont + 1) + "º hit");
+				dmg += (int)((((42*pwr*(atk/def))/50.0)+2)*(1 + critical/2)*tab[tipmove][tipdefense]*stab*random);
+				parcial = dmg - parcial;
+				System.out.println("Causou " + parcial + " de dano!");
+				cont++;
+			}
+			break;
+		
+		case 3: // Ataques deste tipo obedecem a formula: level * ( random(0 a 100) + pwr) / 100. Psywave() é um deles
+			random = Math.random()*(0.15)+0.85;
+			critical =  Math.round(Math.random()/1.6);
+			int pwr2 = (int) Math.round(Math.random()*100);
+			if (tipmove == tipofense)
+				stab = 1.5;
+			else
+				stab = 1.0;
+			if (tab[tipmove][tipdefense] == 2.0)
+				System.out.println("It's super effective");
+			if (tab[tipmove][tipdefense] == 0.5)
+				System.out.println("It's not very effective");
+			if (critical == 1.0)
+				System.out.println("It's a critical hit");
+			dmg = (int)((((42*(pwr+pwr2)*(atk/def))/50.0)+2)*(1 + critical/2)*tab[tipmove][tipdefense]*stab*random);
+			break;	
+		}
+		return dmg;
+
 	}
 }
